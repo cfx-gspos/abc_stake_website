@@ -1,0 +1,431 @@
+﻿<html lang="en">
+
+<head>
+  <title>ABC PoS Pool</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A stable, safe, decentralized, easy to use Conflux PoS Pool">
+  <meta name="keywords" content="Conflux, PoS, Pool, ABC, decentralized">
+  <meta content="width=device-width,initial-scale=1.0,maxinmum-scale=1.0,user-scalable=0" name="viewport">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href="app/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="app/bootstrap-icons.css">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body class="bg-light">
+  <nav id="navbar">
+    <div class="flexbox boxone">
+      <img src="./static/images/logo@2x.png" style="cursor: pointer" alt="">
+      <div id="navbarSupportedContent">
+        <ul>
+          <li @click="changeSpace('Core')" class="mr" :class="`${space.value == 'Core' ? 'currnav' : ''}`">
+            Core
+          </li>
+          <li v-if="config.value.eSpaceAddress" @click="changeSpace('eSpace')" :class="`${space.value == 'eSpace' ? 'currnav' : ''}`">
+            eSpace
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id='app'>
+
+    <div class="lc">
+      <span class="language" v-on:click="changeLanguage">{{viewRender.Language}}</span>
+      <div class="connectWallet">
+        <span class="btnA" v-if="!userInfo.connected" v-on:click="connectWallet">{{viewRender.connectWallet}}</span>
+        <div v-else>
+          <span class="btnA">
+            {{shortenAccount}}
+          </span>
+          <span class="text-primary" v-if="chainStatus.chainId === 1">&nbsp; TestNet</span>
+        </div>
+      </div>
+    </div>
+
+    <div v-else>
+      <!-- 1222222222222222 -->
+    </div>
+    <!-- 头部描述s -->
+    <div class="pdlr120" :class="!IsPC ? 'ismobile' : ''">
+      <div class="abcp">ABC PoS Pool</div>
+      <div class="abcbox">
+        <div class="one">
+          <div class="featuresbox">
+            <div class="features">
+              <div class="t">{{viewRender.Features}}</div>
+              <div v-if="!IsPC" v-on:click="featuresSH = !featuresSH" class="hideShowBtn"></div>
+              <div v-if="featuresSH" class="l" v-for="item in viewRender.FeaturesList"> 
+                {{item}}
+              </div>
+            </div>
+          </div>
+          <div class="stakeRulesbox">
+            <div class="t">{{viewRender.StakeRules}}</div>
+            <div v-if="!IsPC" v-on:click="StakeRulesSH = !StakeRulesSH" class="hideShowBtn"></div>
+            <ul v-if="StakeRulesSH">
+              <li v-for="item in viewRender.StakeRulesList">
+                <div>·</div>
+                <span>
+                  {{item}}
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="right-con">
+          <div class="am12">
+            <span class="amount1">{{amount1}}</span>
+            <!-- <span class="amount2">{{amount2}}</span> -->
+          </div>
+          <div class="ades">{{viewRender.abccutDown}}</div>
+          <div class="anum">
+            <!-- .anum -->
+            <div>
+              <img class="mr12" :src="`./static/images/numbers/${anum[0]}.png`" alt="">
+              <img :src="`./static/images/numbers/${anum[1]}.png`" alt="">
+            </div>
+          </div>
+          <div class="amount3">{{amount3}}</div>
+        </div>
+      </div>
+    </div>
+    <!-- 头部描述e -->
+
+    <!-- 数值展示s -->
+    <div class="svt-item-box" v-bind:class="lang ==='cn' ? 'mt125' : ''" :class="!IsPC ? 'ismobile' : ''">
+      <div class="svt-item">
+        <img src="./static/images/Staking Vault_icon.png" alt="img">
+        <div>
+          <div class="font-a"><span class="" :title="formatedTotalLocked">{{prettyTotalLocked}}</span></div>
+          <span class="intro-title">{{viewRender.StakingVault}}</span>
+        </div>
+      </div>
+      <div class="svt-item">
+        <img src="./static/images/Total Earned_icon.png" alt="img">
+        <div>
+          <div class="font-a"><span class="" :title="formatedTotalRevenue">{{prettyTotalRevenue}}</span></div>
+          <span class="intro-title">{{viewRender.TotalEarned}}</span>
+        </div>
+      </div>
+      <div class="svt-item">
+        <img src="./static/images/Total Earned_icon(1).png" alt="img">
+        <div>
+          <div class="font-a"><span class="">{{poolInfo.apy}}%</span></div>
+          <span class="intro-title">{{viewRender.ExpectedAPY}}</span>
+        </div>
+      </div>
+      <div class="svt-item">
+        <img src="./static/images/Staker Number_icon.png" alt="img">
+        <div>
+          <div class="font-a"><span class="">{{poolInfo.stakerNumber}}</span></div>
+          <span class="intro-title">{{viewRender.StakerNumber}}</span>
+        </div>
+      </div>
+      <div class="svt-item">
+        <img src="./static/images/Pool Status_icon.png" alt="img">
+        <div>
+          <div class="font-a">
+            <span v-if="poolInfo.status.forceRetired === true" class="" style="color:#42b883">Error</span>
+            <span v-else class="" style="color:#42b883">Good</span>
+          </div>
+          <span class="intro-title"> {{viewRender.PoolStatus}}</span>
+        </div>
+      </div>
+      <div class="svt-item">
+        <img src="./static/images/Loading_icon.png" alt="img">
+        <div>
+          <div class="font-a">
+            <a :href="posAddressLink" target="_blank"
+              style="text-decoration:none">{{shortPosAddress}}</a>
+          </div>
+          <span class="intro-title">{{viewRender.PoSAddress}}</span>
+        </div>
+      </div>
+    </div>
+    <!-- 数值展示e -->
+
+    <!-- <div class="row mt-3 border b-shadow rounded-3 p-2" id="rewardChartContainer" style="display:none">
+      <div class="col">
+        <canvas id="rewardChart" height="40"></canvas>
+      </div>
+    </div> -->
+
+    <div class="msr-box" :class="!IsPC ? 'ismobile' : ''">
+      <div class="">
+        <div class="mb18">
+          <div><span class="numm">{{userStakedCFX}}</span></div>
+          <span class="tipm"> {{viewRender.MyStaked}}</span>
+        </div>
+        <div class="flexAbc">
+          <input type="number" v-model="stakeCount">
+          <span v-if="!userInfo.connected" class="stake disabled">{{viewRender.Stake}}</span>
+          <span v-else class="stake" v-on:click="stake" :disabled="!userInfo.connected">{{viewRender.Stake}}</span>
+          <span v-if="!IsPC && userInfo.connected" class="Balance">{{viewRender.Balance}}: {{userInfo.balance}} CFX</span>
+        </div>
+        <p class="" v-if="userInfo.connected && IsPC">{{viewRender.Balance}}: {{userInfo.balance}} CFX</p>
+      </div>
+
+      <div class="">
+        <div class="mb18" :class="!IsPC ? 'mb38' : ''">
+          <div><span class="numm">{{userInfo.userInterest}}</span></div>
+          <span class="tipm">{{viewRender.MyRewards}}</span>
+        </div>
+        <div class="flexAbc">
+          <span v-if="!userInfo.connected" class="stake disabled">{{viewRender.Claim}}</span>
+          <span v-else class="stake" v-on:click="claim" :disabled="!userInfo.connected">{{viewRender.Claim}}</span>
+          <span class="lastRewardTime" v-if="!IsPC && userInfo.connected && poolInfo.lastRewardTime > 0">{{viewRender.LastUpdate}}:
+            {{lastRewardTime}}</span>
+        </div>
+        <p class="" v-if="IsPC && userInfo.connected && poolInfo.lastRewardTime > 0">{{viewRender.LastUpdate}}:
+          {{lastRewardTime}}</p>
+      </div>
+
+      <div class="">
+        <div  class="mb18">
+          <div><span class="numm">{{unstakeableCFX}}</span></div>
+          <span class="tipm">{{viewRender.Unstakeable}}  CFX</span>
+        </div>
+        <div class="flexAbc">
+            <input class="" type="number" v-model="unstakeCount">
+            <span v-if="!userInfo.connected" class="stake disabled">{{viewRender.Unstake}}</span>
+            <span v-else class="stake" v-on:click="unstake" :disabled="!userInfo.connected">{{viewRender.Unstake}}</span>
+        </div>
+      </div>
+
+      <div class="">
+        <div class="mb18" :class="!IsPC ? 'mb38' : ''">
+          <div><span class="numm">{{withdrawableCFX}}</span></div>
+          <span class="tipm">{{viewRender.WithdrawableCFX}}</span>
+        </div>
+        <div class="flexAbc">
+          <span v-if="!userInfo.connected" class="stake disabled">{{viewRender.Withdraw}}</span>
+          <span v-else class="stake" v-on:click="withdraw" :disabled="!userInfo.connected">{{viewRender.Withdraw}}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 弹窗1 -->
+    <div class="modal fade" id="hashModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header" style="border-bottom: none">
+            <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <i class="bi-check-circle-fill" style="font-size: 40px; color: rgb(100, 237, 107);"></i>
+            <br />
+            <span>Transaction Submitted.</span>
+            <!-- <br/> -->
+            <!-- <span>Transaction Hash: </span> -->
+            <!-- <a :href="txScanLink">{{shortHash}}</a> -->
+            <!-- <a id="hashLink"></a> -->
+            <div style="height: 50px"></div>
+          </div>
+          <!-- <div class="modal-footer" style="border-top: none">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 弹窗2 -->
+    <div class="modal fade" id="withdrawModal" tabindex="-2" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" style="border-bottom: none">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <i class="bi-hourglass-split" style="font-size: 40px; color: cornflowerblue;"></i>
+            <br />
+            <span>The unlock time is estimated by PoW block number is not very accurate. Your votes is still unlocking,
+              please try again several hours later</span>
+            <div style="height: 50px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 表格部分s -->
+    <div v-if="userInfo.connected" class="tbabc" :class="!IsPC ? 'ismobile' : ''">
+      <div class="">
+        <div class="tbtitle"> {{viewRender.Lockingvotes}}</div>
+        <table class="tb">
+          <thead>
+            <tr>
+              <th scope="col">{{viewRender.StakAmount}}</th>
+              <th scope="col">{{viewRender.EndTime}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
+              <td>111</td>
+              <td>22</td>
+            </tr>
+            <tr>
+              <td>2111</td>
+              <td>22</td>
+            </tr> -->
+            <tr v-for="item in userInfo.userInQueue">
+              <th scope="row">{{item.amount}}</th>
+              <td>{{item.endTime}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="">
+        <div class="tbtitle">{{viewRender.Unlockingvotes}}</div>
+        <table class="tb" style="margin-bottom: 0;">
+          <thead>
+            <tr>
+              <th scope="col">{{viewRender.StakAmount}}</th>
+              <th scope="col">{{viewRender.EndTime}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in userInfo.userOutOueue">
+              <th scope="row">{{item.amount}}</th>
+              <td>{{item.endTime}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- 表格部分e -->
+
+    <div class="Congratulationsbox" :class="!IsPC ? 'ismobile' : ''">
+      <div class="Congratulationsboxinner">
+        <div class="innnerabc">
+          <strong>{{viewRender.CongratulationsShort}}</strong>
+          <span>{{viewRender.Congratulations}} </span>
+          <br>
+          <a href="/mobile/lp.html"> {{viewRender.LPreward}} </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- nft s-->
+    <div v-if="false" class="">
+      <!-- v-if="userInfo.nftCount>0" -->
+      <div class="">
+        <h5>Genesis NFT:</h5>
+        <img src="https://pospool.ABCverse.com/NFT/ABC_PoS_Pool_Genesis_NFT_Small.png" alt="" width="180">
+      </div>
+    </div>
+    <!-- nft e-->
+
+    <!-- 文章1s -->
+    <div class="Clarificationbox" :class="!IsPC ? 'ismobile' : ''">
+      <div class="Clarification">
+        <strong>{{viewRender.Clarification}}</strong>
+        <span>{{viewRender.Fromthe}}</span>
+        <a
+          class="votinglist"
+          href='https://confluxscan.io/pos/accounts/0xe6e247242147b83de97e43c6c07afcfe2935aa8a2879e96f29990a04860288ee?tab=incoming-history'
+          target='_blank'>{{viewRender.votinglist}}</a> 
+          <span v-if="lang === 'en'">,</span>
+          <span>{{viewRender.theactual}}</span>
+        <a class="mobile" href="/mobile" target="_blank">{{viewRender.MobileVersion}}</a>
+      </div>
+    </div>
+    <!-- 文章1e -->
+    <div class="footer1box" :class="!IsPC ? 'ismobile' : ''">
+      <div class="footer1">
+        <input class="emailinput" type="email" placeholder="Email address">
+        <input class="phoneinput" type="phone" placeholder="Phone number">
+        <span v-if="!userInfo.connected" class="stake disabled">{{viewRender.Binding}}</span>
+        <span v-else class="stake" v-on:click="bindAddress">{{viewRender.Binding}}</span>
+      </div>
+    </div>
+    <div class="footer2box" :class="!IsPC ? 'ismobile' : ''">
+      <div class="footer2">
+        <div>
+          <img src="./static/images/wechat_logo.png" alt="">
+          {{viewRender.Wechat}}
+        </div>
+        <div>
+          <img src="./static/images/qq_logo.png" alt="">
+          {{viewRender.QQ}}
+        </div>
+        <div>
+          <img src="./static/images/telegram_logo.png" alt="">
+          Telegram
+          <a href="https://t.me/abcdaohome" target="_blank">https://t.me/abcdaohome</a>
+        </div>
+        <div>
+          <img src="./static/images/twitter_logo.png" alt="">
+          {{viewRender.Twitter}} {{viewRender.TwitterUrl}}
+        </div>
+        <div>
+          <img src="./static/images/telegram_logo.png" alt="">
+          {{viewRender.Telegram}} 
+          <a href="https://t.me/abcdaohome" target="_blank">{{viewRender.TelegramYul}}</a>
+        </div>
+      </div>
+    </div>
+    <div class="footerabc" :class="!IsPC ? 'ismobile' : ''"></div>
+  </div>
+  <script>
+    var viewport = document.documentElement;
+    var width = viewport.clientWidth;
+    function IsPCFn(){
+      var userAgentInfo = navigator.userAgent;
+      var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");  
+      var flag = true;  
+      for (var v = 0; v < Agents.length; v++) {  
+          if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }  
+      }  
+      return flag;  
+    }
+    if (IsPCFn()) {
+      var fontSize =100 * width / 1920; // 设计稿字号x实际屏宽/设计稿宽 1rem = 100px  原公式：实际字号/实际屏宽 = 设计字号/设计稿宽
+      viewport.style.fontSize = fontSize.toFixed(1) + 'px';
+      window.onresize = function (param) { 
+        viewport.style.fontSize = fontSize.toFixed(1) + 'px';
+      }
+    } else {
+      var fontSize =100 * width / 750; // 设计稿字号x实际屏宽/设计稿宽 1rem = 100px  原公式：实际字号/实际屏宽 = 设计字号/设计稿宽
+      viewport.style.fontSize = fontSize.toFixed(1) + 'px';
+      window.onresize = function (param) { 
+        viewport.style.fontSize = fontSize.toFixed(1) + 'px';
+      }  
+    }
+  </script>
+  <script src="//cdn.staticfile.org/jquery/1.8.2/jquery.min.js"></script>
+  <script src="app/vue.global.js"></script>
+  <script src='app/big.min.js'></script>
+  <script src="app/js-conflux-sdk.umd.min.js"></script>
+  <script src="app/ethers-5.2.umd.min.js" type="application/javascript"></script>
+  <script src="app/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="app/chart.js"></script>
+  <script src="app/PoolABI.js?id=2256"></script>
+  <script src="app/PoSPoolContract.js?id=2256"></script>
+  <script src="app/utils.js?id=2256"></script>
+  <script src="app/header.js?id=2256"></script>
+  <script src="app/main.js?id=2256"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W9RSB2BS8T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-W9RSB2BS8T');
+  </script>
+</body>
+
+</html>
+<style>
+  .active {
+    color: #000 ! important;
+    background-color: yellow;
+  }
+</style>
