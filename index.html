@@ -34,7 +34,7 @@
   <div id='app'>
 
     <div class="lc">
-      <span class="language" v-on:click="changeLanguage">{{viewRender.Language}}</span>
+      <span class="language" v-on:click="changeLanguage" style="display: none;">{{viewRender.Language}}</span>
       <div class="connectWallet">
         <span class="btnA" v-if="!userInfo.connected" v-on:click="connectWallet">{{viewRender.connectWallet}}</span>
         <div v-else>
@@ -78,7 +78,7 @@
         </div>
         <div class="right-con">
           <div class="am12">
-            <span class="amount1">{{amount1}}</span>
+            $<span class="amount1" id="priceCell"></span>
             <!-- <span class="amount2">{{amount2}}</span> -->
           </div>
           <div class="ades">{{viewRender.abccutDown}}</div>
@@ -336,7 +336,7 @@
       </div>
     </div>
     <!-- 文章1e -->
-    <div class="footer1box" :class="!IsPC ? 'ismobile' : ''">
+    <div class="footer1box" :class="!IsPC ? 'ismobile' : ''" style="display: none;">
       <div class="footer1">
         <input class="emailinput" type="email" placeholder="Email address">
         <input class="phoneinput" type="phone" placeholder="Phone number">

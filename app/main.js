@@ -4,7 +4,6 @@ console.log('SDK version: ', coreClient.version);
 let hashModal = new bootstrap.Modal(document.getElementById('hashModal'), {});
 let withdrawModal = new bootstrap.Modal(document.getElementById('withdrawModal'), {});
 
-
 const PoSPool = {
   watch: {
     'lang'(newSpace, old){
@@ -127,7 +126,7 @@ const PoSPool = {
           //1
           Clarification:'澄清!',
           Fromthe:'',
-          votinglist:'',
+          votinglist:'voting list',
           theactual:`從參與開始，實際投票時間約爲63分鍾（預計60分鍾）.用戶必須等待約爲63/60=105%的時間來解鎖，因此，參與後至少需要13天+15.6小時才能解鎖。提取則需要等待1天+1.2小時才能提取。
           您可以完全放心，您的CFX將投入到Conflux PoS中，以提高網絡的安全性爲前提獲取POS收益`,
           MobileVersion:'手機版',
@@ -306,15 +305,27 @@ const PoSPool = {
       this.featuresSH = false;
     }
     let _that = this;
-    $.ajax({
-			url:"https://confluxpos.cn/abcprice.json",
-			type:"GET",
-			success:function (data) {
-				console.log(data);
-        _that.amount1 = data.priceUSD.toFixed(6)
-			},
-			dataType : "json"
-		});
+    console.log('aaaa')
+ 
+    setInterval(function(){
+      console.log(311)
+      // $.get("https://fccfx.gspos.club/abc_price.json", function(data){
+      //             console.log(313);
+      //     $('#priceCell').val(data.price.toFixed(6))
+      // });
+      $.ajax({
+        url:"https://fccfx.gspos.club/abc_price.json",
+        type:"GET",
+        success:function (data) {
+          console.log(313);
+          _that.amount1 = data.price.toFixed(6)
+          $('#priceCell').html(_that.amount1 )
+        },
+        dataType : "json"
+      });
+
+    },5000)
+   
  // Detect current network
 try{
     if(conflux!=undefied&&conflux) {
