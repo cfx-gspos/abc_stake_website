@@ -657,6 +657,10 @@ border: 1px solid #C8D0D9;
   border-radius: .06rem;
   padding: .4rem .48rem;
   line-height: .38rem;
+  /* text-align: justify; */
+}
+.pd40{
+  padding-bottom: .6rem;
 }
 /* .innnerabc {
   font-size: .22rem;
@@ -698,6 +702,7 @@ border: 1px solid #C8D0D9;
   padding-left: .32rem;
   padding-right: .32rem;
   padding-bottom: .39rem;
+  text-align: justify;
 }
 
 
@@ -742,6 +747,7 @@ border: 1px solid #C8D0D9;
 .Clarificationbox.ismobile .Clarification a.mobile {
   margin-top: .25rem;
   font-size: .26rem;
+  text-align: justify;
 }
 
 .Clarificationbox{
