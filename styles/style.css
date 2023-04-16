@@ -608,7 +608,7 @@ border: 1px solid #C8D0D9;
   font-size: .18rem;
   font-family: PingFang SC;
   font-weight: 800;
-  padding-left: .2rem;
+  padding-left: 1em;
   height: .54rem;
 }
 .tbabc.ismobile .tb tr td{
@@ -721,7 +721,6 @@ border: 1px solid #C8D0D9;
 
 .Clarification span,.Clarification a{
   font-size: .18rem;
-  font-family: PingFang SC;
   font-weight: 500;
   color: #000000;
 }
