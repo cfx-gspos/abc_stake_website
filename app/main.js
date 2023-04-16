@@ -57,7 +57,7 @@ const PoSPool = {
           Fromthe:'From the',
           votinglist:'voting list',
           theactual:`The actual vote period is about 63 min(vs estimated 60 min), user have to wait for about 63/60=105% longer to withdraw their asset. Therefore, after stake, you need to wait for at least 13 days+ 15.6hours to unstake, after unstake, you need to wait 1 day+1.2 hours to withdraw.
-                    Stake your CFX in Conflux PoS to help improve the network's finality and earn PoS rewards`,
+                    Stake your CFX in Conflux PoS to help improve the network's finality and earn PoS rewards.`,
           MobileVersion:'Mobile Version',
           //1
           Emailaddress:'Email address',
@@ -240,7 +240,7 @@ const PoSPool = {
         Fromthe:'From the',
         votinglist:'voting list',
         theactual:`The actual vote period is about 63 min(vs estimated 60 min), user have to wait for about 63/60=105% longer to withdraw their asset. Therefore, after stake, you need to wait for at least 13 days+ 15.6hours to unstake, after unstake, you need to wait 1 day+1.2 hours to withdraw.
-                  Stake your CFX in Conflux PoS to help improve the network's finality and earn PoS rewards`,
+                  Stake your CFX in Conflux PoS to help improve the network's finality and earn PoS rewards.`,
         MobileVersion:'Mobile Version',
         //1
         Emailaddress:'Email address',
