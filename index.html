@@ -325,14 +325,8 @@
     <div class="Clarificationbox" :class="!IsPC ? 'ismobile' : ''">
       <div class="Clarification">
         <strong>{{viewRender.Clarification}}</strong>
-        <span>{{viewRender.Fromthe}}</span>
-        <a
-          class="votinglist"
-          href='https://confluxscan.io/pos/accounts/0xe6e247242147b83de97e43c6c07afcfe2935aa8a2879e96f29990a04860288ee?tab=incoming-history'
-          target='_blank'>{{viewRender.votinglist}}</a> 
-          <span v-if="lang === 'en'">,</span>
+       
           <span>{{viewRender.theactual}}</span>
-        <a class="mobile" href="/mobile" target="_blank">{{viewRender.MobileVersion}}</a>
       </div>
     </div>
     <!-- 文章1e -->

@@ -9,7 +9,7 @@ const PoSPool = {
     'lang'(newSpace, old){
       if (newSpace == 'en') {
         this.viewRender = {
-          abccutDown: 'Airdrop ABC countdown:',
+          abccutDown: 'Airdrop ABC countdown',
           Core: 'Core',
           eSpace: 'eSpace',
           Language: 'Language',
@@ -56,7 +56,7 @@ const PoSPool = {
           Clarification:'Clarification!',
           Fromthe:'From the',
           votinglist:'voting list',
-          theactual:`the actual vote period is about 63 min(vs estimated 60 min), user have to wait for about 63/60=105% longer to withdraw their asset. Therefore, after stake, you need to wait for at least 13 days+ 15.6hours to unstake, after unstake, you need to wait 1 day+1.2 hours to withdraw.
+          theactual:`The actual vote period is about 63 min(vs estimated 60 min), user have to wait for about 63/60=105% longer to withdraw their asset. Therefore, after stake, you need to wait for at least 13 days+ 15.6hours to unstake, after unstake, you need to wait 1 day+1.2 hours to withdraw.
                     Stake your CFX in Conflux PoS to help improve the network's finality and earn PoS rewards`,
           MobileVersion:'Mobile Version',
           //1
@@ -121,7 +121,7 @@ const PoSPool = {
           StakAmount:'金額（CFX）',
           EndTime:'結束時間',
           CongratulationsShort: '恭喜!',
-          Congratulations:'LP地址快照已經完成，已經在https://confluxpos.cn發布,每天在不同時間隨機快照。妳在Swappi農場內的LP數量與空投CFX數量相關。這是公布的表單',
+          Congratulations:'LP地址快照已經完成，已經在https://confluxpos.cn/mobile/lp.html發布,每天在不同時間隨機快照。妳在Swappi農場內的LP數量與空投CFX數量相關。這是公布的表單',
           LPreward:'CFX/ABC LP reward',
           //1
           Clarification:'澄清!',
@@ -192,7 +192,7 @@ const PoSPool = {
       StakeRulesSH: true,
       lang: 'en',
       viewRender: {
-        abccutDown: 'Airdrop ABC countdown:',
+        abccutDown: 'Airdrop ABC countdown',
         Core: 'Core',
         eSpace: 'eSpace',
         Language: 'Language',
@@ -201,7 +201,7 @@ const PoSPool = {
         Features:'Features:',
         FeaturesList: [
           '1. Security First, we will NEVER change the contract code from Conflux official team, our KYC info have been provided to Conflux foundation team.',
-          '2. ABC Pool is a fully autonomous DAO organization, 60% of the service fee will be used to reward customers.',
+          '2. ABC Pool is a fully autonomous DAO organization, 60% of the service fee will be used to ABC Token.',
           '3. Lossless stake to obtain CFX+ABC double income.'
         ],
         StakeRules: 'Stake Rules:',
@@ -209,7 +209,7 @@ const PoSPool = {
           'The lock period of Stake/Unstake is 13+1 day(May need another 2~3 hours)',
           'The reward will updated every hour',
           'The Stake/Unstake CFX amount must be multiple of 1000',
-          'Performance fee is 4% of the PoS reward',
+          'Performance fee is 8% of the PoS reward',
           'The reward can be claimed any time'
         ],
         StakingVault :'Staking Vault',
@@ -233,13 +233,13 @@ const PoSPool = {
         StakAmount:'Amount （CFX)',
         EndTime:'EndTime',
         CongratulationsShort: 'Congratulations!',
-        Congratulations:'The lp address snapshot is completed on March 1st, which has been published on the official website https://confluxpos.cn. Then, a snapshot will be taken every day at varying times. The number of your lp is related to the number of airdropped cfx  CFX/ABC LP provider can earn extra CFX , here is the airdrop list',
+        Congratulations:'The LP address snapshot has been completed and published at https://confluxpos.cn/mobile/lp.html, with random snapshots taken every day at different times. Your LP quantity within the Swappi farm is related to the airdropped CFX quantity.',
         LPreward:'CFX/ABC LP reward',
         //1
         Clarification:'Clarification!',
         Fromthe:'From the',
         votinglist:'voting list',
-        theactual:`the actual vote period is about 63 min(vs estimated 60 min), user have to wait for about 63/60=105% longer to withdraw their asset. Therefore, after stake, you need to wait for at least 13 days+ 15.6hours to unstake, after unstake, you need to wait 1 day+1.2 hours to withdraw.
+        theactual:`The actual vote period is about 63 min(vs estimated 60 min), user have to wait for about 63/60=105% longer to withdraw their asset. Therefore, after stake, you need to wait for at least 13 days+ 15.6hours to unstake, after unstake, you need to wait 1 day+1.2 hours to withdraw.
                   Stake your CFX in Conflux PoS to help improve the network's finality and earn PoS rewards`,
         MobileVersion:'Mobile Version',
         //1
