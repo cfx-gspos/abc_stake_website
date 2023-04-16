@@ -34,7 +34,8 @@
   <div id='app'>
 
     <div class="lc">
-      <span class="language" v-on:click="changeLanguage" style="display: none;">{{viewRender.Language}}</span>
+      <span class="language" style="border: none;background: none;"></span>
+      <span v-if="false" class="language" v-on:click="changeLanguage">{{viewRender.Language}}</span>
       <div class="connectWallet">
         <span class="btnA" v-if="!userInfo.connected" v-on:click="connectWallet">{{viewRender.connectWallet}}</span>
         <div v-else>
