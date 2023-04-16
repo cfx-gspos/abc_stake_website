@@ -155,7 +155,7 @@
     </div> -->
 
     <div class="msr-box" :class="!IsPC ? 'ismobile' : ''">
-      <div class="">
+      <div :class="!IsPC ? 'pd40' : ''">
         <div class="mb18">
           <div><span class="numm">{{userStakedCFX}}</span></div>
           <span class="tipm"> {{viewRender.MyStaked}}</span>
@@ -164,12 +164,12 @@
           <input type="number" v-model="stakeCount">
           <span v-if="!userInfo.connected" class="stake disabled">{{viewRender.Stake}}</span>
           <span v-else class="stake" v-on:click="stake" :disabled="!userInfo.connected">{{viewRender.Stake}}</span>
-          <span v-if="!IsPC && userInfo.connected" class="Balance">{{viewRender.Balance}}: {{userInfo.balance}} CFX</span>
+          <!-- <span v-if="!IsPC && userInfo.connected" class="Balance">{{viewRender.Balance}}: {{userInfo.balance}} CFX</span> -->
         </div>
-        <p class="" v-if="userInfo.connected && IsPC">{{viewRender.Balance}}: {{userInfo.balance}} CFX</p>
+        <p class="" v-if="userInfo.connected">{{viewRender.Balance}}: {{userInfo.balance}} CFX</p>
       </div>
 
-      <div class="">
+      <div :class="!IsPC ? 'pd40' : ''">
         <div class="mb18" :class="!IsPC ? 'mb38' : ''">
           <div><span class="numm">{{userInfo.userInterest}}</span></div>
           <span class="tipm">{{viewRender.MyRewards}}</span>
@@ -177,14 +177,14 @@
         <div class="flexAbc">
           <span v-if="!userInfo.connected" class="stake disabled">{{viewRender.Claim}}</span>
           <span v-else class="stake" v-on:click="claim" :disabled="!userInfo.connected">{{viewRender.Claim}}</span>
-          <span class="lastRewardTime" v-if="!IsPC && userInfo.connected && poolInfo.lastRewardTime > 0">{{viewRender.LastUpdate}}:
-            {{lastRewardTime}}</span>
+          <!-- <span class="lastRewardTime" v-if="!IsPC && userInfo.connected && poolInfo.lastRewardTime > 0">{{viewRender.LastUpdate}}:
+            {{lastRewardTime}}</span> -->
         </div>
-        <p class="" v-if="IsPC && userInfo.connected && poolInfo.lastRewardTime > 0">{{viewRender.LastUpdate}}:
+        <p class="" v-if="userInfo.connected && poolInfo.lastRewardTime > 0">{{viewRender.LastUpdate}}:
           {{lastRewardTime}}</p>
       </div>
 
-      <div class="">
+      <div :class="!IsPC ? 'pd40' : ''">
         <div  class="mb18">
           <div><span class="numm">{{unstakeableCFX}}</span></div>
           <span class="tipm">{{viewRender.Unstakeable}}  CFX</span>
@@ -303,7 +303,7 @@
     <div class="Congratulationsbox" :class="!IsPC ? 'ismobile' : ''">
       <div class="Congratulationsboxinner">
         <div class="innnerabc">
-          <strong>{{viewRender.CongratulationsShort}}</strong>
+          <div style="margin-bottom: 0.18rem;"><strong>{{viewRender.CongratulationsShort}}</strong></div>
           <span>{{viewRender.Congratulations}} </span>
           <br>
           <a href="/mobile/lp.html"> {{viewRender.LPreward}} </a>
@@ -330,7 +330,7 @@
       </div>
     </div>
     <!-- 文章1e -->
-    <div class="footer1box" :class="!IsPC ? 'ismobile' : ''" style="display: none;">
+    <div class="footer1box" v-if="false" :class="!IsPC ? 'ismobile' : ''">
       <div class="footer1">
         <input class="emailinput" type="email" placeholder="Email address">
         <input class="phoneinput" type="phone" placeholder="Phone number">
