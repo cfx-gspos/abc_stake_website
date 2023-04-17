@@ -15,6 +15,10 @@
 </head>
 
 <body class="bg-light">
+  <div style="
+  font-size: 18px;
+  text-align: right;
+"><a href="https://v1.confluxpos.cn/mobile/" >Old Website </a></div>
   <nav id="navbar">
     <div class="flexbox boxone">
       <img src="./static/images/logo@2x.png" style="cursor: pointer" alt="">
@@ -34,8 +38,10 @@
   <div id='app'>
 
     <div class="lc">
+     
       <span class="language" style="border: none;background: none;"></span>
       <span v-if="false" class="language" v-on:click="changeLanguage">{{viewRender.Language}}</span>
+    
       <div class="connectWallet">
         <span class="btnA" v-if="!userInfo.connected" v-on:click="connectWallet">{{viewRender.connectWallet}}</span>
         <div v-else>

@@ -305,10 +305,8 @@ const PoSPool = {
       this.featuresSH = false;
     }
     let _that = this;
-    console.log('aaaa')
  
     setInterval(function(){
-      console.log(311)
       // $.get("https://fccfx.gspos.club/abc_price.json", function(data){
       //             console.log(313);
       //     $('#priceCell').val(data.price.toFixed(6))
@@ -317,14 +315,13 @@ const PoSPool = {
         url:"https://fccfx.gspos.club/abc_price.json",
         type:"GET",
         success:function (data) {
-          console.log(313);
           _that.amount1 = data.price.toFixed(6)
           $('#priceCell').html(_that.amount1 )
         },
         dataType : "json"
       });
 
-    },5000)
+    },3000)
    
  // Detect current network
 try{
