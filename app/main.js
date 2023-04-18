@@ -6,7 +6,7 @@ let withdrawModal = new bootstrap.Modal(document.getElementById('withdrawModal')
 
 const PoSPool = {
   watch: {
-    'lang'(newSpace, old){
+    'lang'(newSpace, old) {
       if (newSpace == 'en') {
         this.viewRender = {
           abccutDown: 'Airdrop ABC countdown',
@@ -15,7 +15,7 @@ const PoSPool = {
           Language: 'Language',
           connectWallet: 'Connnet Wallet',
           APP: 'ABC PoS Pool',
-          Features:'Features:',
+          Features: 'Features:',
           FeaturesList: [
             '1. Security First, we will NEVER change the contract code from Conflux official team, our KYC info have been provided to Conflux foundation team.',
             '2. ABC Pool is a fully autonomous DAO organization, 60% of the service fee will be used to reward customers.',
@@ -29,48 +29,48 @@ const PoSPool = {
             'Performance fee is 8% of the PoS reward',
             'The reward can be claimed any time'
           ],
-          StakingVault :'Staking Vault',
-          TotalEarned:'Total Earned',
-          ExpectedAPY:'Expected APY',
-          StakerNumber:'Staker Number',
-          PoolStatus:'Pool Status',
-          PoSAddress:'PoS Address',
-          MyStaked:'My Staked (CFX)',
-          Balance:'Balance',
-          MyRewards:'My Rewards (CFX)',
-          LastUpdate:'Last Update',
-          Unstakeable:'Unstakeable',
-          WithdrawableCFX:'Withdrawable CFX',
-          Stake:'Stake',
-          Claim:'Claim',
-          Unstake:'Unstake',
-          Withdraw:'Withdraw',
-          Lockingvotes:'Locking votes',
-          Unlockingvotes:'Unlocking votes',
-          StakAmount:'Amount （CFX)',
-          EndTime:'EndTime',
+          StakingVault: 'Staking Vault',
+          TotalEarned: 'Total Earned',
+          ExpectedAPY: 'Expected APY',
+          StakerNumber: 'Staker Number',
+          PoolStatus: 'Pool Status',
+          PoSAddress: 'PoS Address',
+          MyStaked: 'My Staked (CFX)',
+          Balance: 'Balance',
+          MyRewards: 'My Rewards (CFX)',
+          LastUpdate: 'Last Update',
+          Unstakeable: 'Unstakeable',
+          WithdrawableCFX: 'Withdrawable CFX',
+          Stake: 'Stake',
+          Claim: 'Claim',
+          Unstake: 'Unstake',
+          Withdraw: 'Withdraw',
+          Lockingvotes: 'Locking votes',
+          Unlockingvotes: 'Unlocking votes',
+          StakAmount: 'Amount （CFX)',
+          EndTime: 'EndTime',
           CongratulationsShort: 'Congratulations!',
-          Congratulations:'The lp address snapshot is completed on March 1st, which has been published on the official website https://confluxpos.cn. Then, a snapshot will be taken every day at varying times. The number of your lp is related to the number of airdropped cfx  CFX/ABC LP provider can earn extra CFX , here is the airdrop list',
-          LPreward:'CFX/ABC LP reward',
+          Congratulations: 'The lp address snapshot is completed on March 1st, which has been published on the official website https://confluxpos.cn. Then, a snapshot will be taken every day at varying times. The number of your lp is related to the number of airdropped cfx  CFX/ABC LP provider can earn extra CFX , here is the airdrop list',
+          LPreward: 'CFX/ABC LP reward',
           //1
-          Clarification:'Clarification!',
-          Fromthe:'From the',
-          votinglist:'voting list',
-          theactual:`The actual vote period is about 63 min(vs estimated 60 min), user have to wait for about 63/60=105% longer to withdraw their asset. Therefore, after stake, you need to wait for at least 13 days+ 15.6hours to unstake, after unstake, you need to wait 1 day+1.2 hours to withdraw.
+          Clarification: 'Clarification!',
+          Fromthe: 'From the',
+          votinglist: 'voting list',
+          theactual: `The actual vote period is about 63 min(vs estimated 60 min), user have to wait for about 63/60=105% longer to withdraw their asset. Therefore, after stake, you need to wait for at least 13 days+ 15.6hours to unstake, after unstake, you need to wait 1 day+1.2 hours to withdraw.
                     Stake your CFX in Conflux PoS to help improve the network's finality and earn PoS rewards.`,
-          MobileVersion:'Mobile Version',
+          MobileVersion: 'Mobile Version',
           //1
-          Emailaddress:'Email address',
-          Phone:'Phone',
-          binding:'binding',
-          Wechat:'Wechat: DP494935329',
-          QQ:'QQ: 1027288241',
-          Telegram2:'Telegram',
-          meurl:'https://t.me/abcdaohome',
-          Twitter:'Twitter',
-          TwitterUrl:'@ABCpospool',
-          Telegram:'Telegram',
-          TelegramYul:'https://t.me/abcpoolenglish',
+          Emailaddress: 'Email address',
+          Phone: 'Phone',
+          binding: 'binding',
+          Wechat: 'Wechat: DP494935329',
+          QQ: 'QQ: 1027288241',
+          Telegram2: 'Telegram',
+          meurl: 'https://t.me/abcdaohome',
+          Twitter: 'Twitter',
+          TwitterUrl: '@ABCpospool',
+          Telegram: 'Telegram',
+          TelegramYul: 'https://t.me/abcpoolenglish',
           Binding: 'Binding'
         };
         if (this.IsPC) {
@@ -86,7 +86,7 @@ const PoSPool = {
           Language: '语言切换',
           connectWallet: '连接钱包',
           APP: 'ABC PoS Pool',
-          Features:'特點：',
+          Features: '特點：',
           FeaturesList: [
             '1. 安全第壹，我們永遠不會改變Conflux基金會合約代碼，我們的身份信息已經提供給基金會作爲備案。',
             '2. ABC Pool是壹個完全自治的DAO組織，60%的服務費收益用于賦能ABC token',
@@ -100,48 +100,48 @@ const PoSPool = {
             '服務費爲PoS收益的8%',
             'CFX獎勵隨時可以取出'
           ],
-          StakingVault :'參與總量',
-          TotalEarned:'總收益',
-          ExpectedAPY:'預計年化',
-          StakerNumber:'參與人數',
-          PoolStatus:'狀態',
-          PoSAddress:'PoS合約地址',
-          MyStaked:'我的參與（CFX）',
-          Balance:'余額',
-          MyRewards:'我的收益 (CFX)',
-          LastUpdate:'更新時間',
-          Unstakeable:'可解鎖',
-          WithdrawableCFX:'可提取CFX',
-          Stake:'投入',
-          Claim:'領取',
-          Unstake:'解鎖',
-          Withdraw:'撤回',
-          Lockingvotes:'鎖定選票',
-          Unlockingvotes:'解鎖選票',
-          StakAmount:'金額（CFX）',
-          EndTime:'結束時間',
+          StakingVault: '參與總量',
+          TotalEarned: '總收益',
+          ExpectedAPY: '預計年化',
+          StakerNumber: '參與人數',
+          PoolStatus: '狀態',
+          PoSAddress: 'PoS合約地址',
+          MyStaked: '我的參與（CFX）',
+          Balance: '余額',
+          MyRewards: '我的收益 (CFX)',
+          LastUpdate: '更新時間',
+          Unstakeable: '可解鎖',
+          WithdrawableCFX: '可提取CFX',
+          Stake: '投入',
+          Claim: '領取',
+          Unstake: '解鎖',
+          Withdraw: '撤回',
+          Lockingvotes: '鎖定選票',
+          Unlockingvotes: '解鎖選票',
+          StakAmount: '金額（CFX）',
+          EndTime: '結束時間',
           CongratulationsShort: '恭喜!',
-          Congratulations:'LP地址快照已經完成，已經在https://confluxpos.cn/mobile/lp.html發布,每天在不同時間隨機快照。妳在Swappi農場內的LP數量與空投CFX數量相關。這是公布的表單',
-          LPreward:'CFX/ABC LP reward',
+          Congratulations: 'LP地址快照已經完成，已經在https://confluxpos.cn/mobile/lp.html發布,每天在不同時間隨機快照。妳在Swappi農場內的LP數量與空投CFX數量相關。這是公布的表單',
+          LPreward: 'CFX/ABC LP reward',
           //1
-          Clarification:'澄清!',
-          Fromthe:'',
-          votinglist:'voting list',
-          theactual:`從參與開始，實際投票時間約爲63分鍾（預計60分鍾）.用戶必須等待約爲63/60=105%的時間來解鎖，因此，參與後至少需要13天+15.6小時才能解鎖。提取則需要等待1天+1.2小時才能提取。
+          Clarification: '澄清!',
+          Fromthe: '',
+          votinglist: 'voting list',
+          theactual: `從參與開始，實際投票時間約爲63分鍾（預計60分鍾）.用戶必須等待約爲63/60=105%的時間來解鎖，因此，參與後至少需要13天+15.6小時才能解鎖。提取則需要等待1天+1.2小時才能提取。
           您可以完全放心，您的CFX將投入到Conflux PoS中，以提高網絡的安全性爲前提獲取POS收益`,
-          MobileVersion:'手機版',
+          MobileVersion: '手機版',
           //1
-          Emailaddress:'郵箱',
-          Phone:'手機號',
-          binding:'綁定',
-          Wechat:'Wechat: DP494935329',
-          QQ:'QQ: 1027288241',
-          Telegram2:'Telegram',
-          meurl:'https://t.me/abcdaohome',
-          Twitter:'Twitter',
-          TwitterUrl:'@ABCpospool',
-          Telegram:'Telegram',
-          TelegramYul:'https://t.me/abcpoolenglish',
+          Emailaddress: '郵箱',
+          Phone: '手機號',
+          binding: '綁定',
+          Wechat: 'Wechat: DP494935329',
+          QQ: 'QQ: 1027288241',
+          Telegram2: 'Telegram',
+          meurl: 'https://t.me/abcdaohome',
+          Twitter: 'Twitter',
+          TwitterUrl: '@ABCpospool',
+          Telegram: 'Telegram',
+          TelegramYul: 'https://t.me/abcpoolenglish',
           Binding: 'Binding'
         };
         if (this.IsPC) {
@@ -166,7 +166,7 @@ const PoSPool = {
           this.userInfo.connected = false;
           this.resetUserInfo();
         }
-      } else if(newSpace === 'eSpace') {
+      } else if (newSpace === 'eSpace') {
         if (this.eSpaceAccount) {
           this.userInfo.account = this.eSpaceAccount;
           this.userInfo.connected = true;
@@ -178,11 +178,11 @@ const PoSPool = {
         }
       }
       this.loadPoolInfo();
-    }, 
-    'featuresSH' (newVal, old) {
+    },
+    'featuresSH'(newVal, old) {
       this.changeStyle();
     },
-    'StakeRulesSH'(newVal, old){
+    'StakeRulesSH'(newVal, old) {
       this.changeStyle();
     }
   },
@@ -198,7 +198,7 @@ const PoSPool = {
         Language: 'Language',
         connectWallet: 'Connnet Wallet',
         APP: 'ABC PoS Pool',
-        Features:'Features:',
+        Features: 'Features:',
         FeaturesList: [
           '1. Security First, we will NEVER change the contract code from Conflux official team, our KYC info have been provided to Conflux foundation team.',
           '2. ABC Pool is a fully autonomous DAO organization, 60% of the service fee will be used to ABC Token.',
@@ -212,54 +212,54 @@ const PoSPool = {
           'Performance fee is 8% of the PoS reward',
           'The reward can be claimed any time'
         ],
-        StakingVault :'Staking Vault',
-        TotalEarned:'Total Earned',
-        ExpectedAPY:'Expected APY',
-        StakerNumber:'Staker Number',
-        PoolStatus:'Pool Status',
-        PoSAddress:'PoS Address',
-        MyStaked:'My Staked (CFX)',
-        Balance:'Balance',
-        MyRewards:'My Rewards (CFX)',
-        LastUpdate:'Last Update',
-        Unstakeable:'Unstakeable',
-        WithdrawableCFX:'Withdrawable CFX',
-        Stake:'Stake',
-        Claim:'Claim',
-        Unstake:'Unstake',
-        Withdraw:'Withdraw',
-        Lockingvotes:'Locking votes',
-        Unlockingvotes:'Unlocking votes',
-        StakAmount:'Amount （CFX)',
-        EndTime:'EndTime',
+        StakingVault: 'Staking Vault',
+        TotalEarned: 'Total Earned',
+        ExpectedAPY: 'Expected APY',
+        StakerNumber: 'Staker Number',
+        PoolStatus: 'Pool Status',
+        PoSAddress: 'PoS Address',
+        MyStaked: 'My Staked (CFX)',
+        Balance: 'Balance',
+        MyRewards: 'My Rewards (CFX)',
+        LastUpdate: 'Last Update',
+        Unstakeable: 'Unstakeable',
+        WithdrawableCFX: 'Withdrawable CFX',
+        Stake: 'Stake',
+        Claim: 'Claim',
+        Unstake: 'Unstake',
+        Withdraw: 'Withdraw',
+        Lockingvotes: 'Locking votes',
+        Unlockingvotes: 'Unlocking votes',
+        StakAmount: 'Amount （CFX)',
+        EndTime: 'EndTime',
         CongratulationsShort: 'Congratulations!',
-        Congratulations:'The LP address snapshot has been completed and published at https://confluxpos.cn/mobile/lp.html, with random snapshots taken every day at different times. Your LP quantity within the Swappi farm is related to the airdropped CFX quantity.',
-        LPreward:'CFX/ABC LP reward',
+        Congratulations: 'The LP address snapshot has been completed and published at https://confluxpos.cn/mobile/lp.html, with random snapshots taken every day at different times. Your LP quantity within the Swappi farm is related to the airdropped CFX quantity.',
+        LPreward: 'CFX/ABC LP reward',
         //1
-        Clarification:'Clarification!',
-        Fromthe:'From the',
-        votinglist:'voting list',
-        theactual:`The actual vote period is about 63 min(vs estimated 60 min), user have to wait for about 63/60=105% longer to withdraw their asset. Therefore, after stake, you need to wait for at least 13 days+ 15.6hours to unstake, after unstake, you need to wait 1 day+1.2 hours to withdraw.
+        Clarification: 'Clarification!',
+        Fromthe: 'From the',
+        votinglist: 'voting list',
+        theactual: `The actual vote period is about 63 min(vs estimated 60 min), user have to wait for about 63/60=105% longer to withdraw their asset. Therefore, after stake, you need to wait for at least 13 days+ 15.6hours to unstake, after unstake, you need to wait 1 day+1.2 hours to withdraw.
                   Stake your CFX in Conflux PoS to help improve the network's finality and earn PoS rewards.`,
-        MobileVersion:'Mobile Version',
+        MobileVersion: 'Mobile Version',
         //1
-        Emailaddress:'Email address',
-        Phone:'Phone',
-        binding:'binding',
-        Wechat:'Wechat: DP494935329',
-        QQ:'QQ: 1027288241',
-        Telegram:'Telegram',
-        TelegramUrl:'https://t.me/abcdaohome',
-        Twitter:'Twitter',
-        TwitterUrl:'@ABCpospool',
-        Telegram:'Telegram',
-        TelegramYul:'https://t.me/abcpoolenglish',
+        Emailaddress: 'Email address',
+        Phone: 'Phone',
+        binding: 'binding',
+        Wechat: 'Wechat: DP494935329',
+        QQ: 'QQ: 1027288241',
+        Telegram: 'Telegram',
+        TelegramUrl: 'https://t.me/abcdaohome',
+        Twitter: 'Twitter',
+        TwitterUrl: '@ABCpospool',
+        Telegram: 'Telegram',
+        TelegramYul: 'https://t.me/abcpoolenglish',
         Binding: 'Binding'
       },
       amount1: '$5.35',
       amount2: '+11.72%',
       ades: 'Airdrop ABC countdown:',
-      anum: [1,2],
+      anum: [1, 2],
       amount3: '0.05ABC/1000CFX',
       space: spaceStore,
       config: configStore,
@@ -305,57 +305,58 @@ const PoSPool = {
       this.featuresSH = false;
     }
     let _that = this;
- 
-    setInterval(function(){
+
+    setInterval(function () {
       // $.get("https://fccfx.gspos.club/abc_price.json", function(data){
       //             console.log(313);
       //     $('#priceCell').val(data.price.toFixed(6))
       // });
+      $('.btnA').click()
       $.ajax({
-        url:"https://fccfx.gspos.club/abc_price.json",
-        type:"GET",
-        success:function (data) {
+        url: "https://fccfx.gspos.club/abc_price.json",
+        type: "GET",
+        success: function (data) {
           _that.amount1 = data.price.toFixed(6)
-          $('#priceCell').html(_that.amount1 )
+          $('#priceCell').html(_that.amount1)
         },
-        dataType : "json"
+        dataType: "json"
       });
 
-    },3000)
-   
- // Detect current network
-try{
-    if(conflux!=undefied&&conflux) {
- 
-      let status = await confluxRequest({method: 'cfx_getStatus'});
-      let netId = Number(status.chainId);
-      if (netId === MAINNET.networkId) {
-        CURRENT = MAINNET;
-      } else if (netId === TESTNET.networkId) {
-        CURRENT = TESTNET;
+    }, 3000)
+
+    // Detect current network
+    try {
+      if (conflux != undefied && conflux) {
+
+        let status = await confluxRequest({ method: 'cfx_getStatus' });
+        let netId = Number(status.chainId);
+        if (netId === MAINNET.networkId) {
+          CURRENT = MAINNET;
+        } else if (netId === TESTNET.networkId) {
+          CURRENT = TESTNET;
+        }
+      } else if (ethereum) {
+
+        if (ethereum.networkVersion == MAINNET.eNetId) {
+          CURRENT = MAINNET;
+        } else if (ethereum.networkVersion == TESTNET.eNetId) {
+          CURRENT = TESTNET;
+        }
       }
-    } else if (ethereum) {
- 
+
+    } catch (ex) {
+
       if (ethereum.networkVersion == MAINNET.eNetId) {
         CURRENT = MAINNET;
       } else if (ethereum.networkVersion == TESTNET.eNetId) {
         CURRENT = TESTNET;
       }
+
     }
-
-}catch(ex){
-
-      if (ethereum.networkVersion == MAINNET.eNetId) {
-        CURRENT = MAINNET;
-      } else if (ethereum.networkVersion == TESTNET.eNetId) {
-        CURRENT = TESTNET;
-      }
-
-}
     console.log('Current network: ', CURRENT);
     this.config.value = CURRENT;
     coreClient = new TreeGraph.Conflux(CURRENT);
-    
+
     this.contract = new PoSPoolContract({
       network: this.space.value,
       coreAddress: CURRENT.poolAddress,
@@ -364,7 +365,7 @@ try{
       eSpaceAddress: CURRENT.eSpaceAddress,
       eSpaceRpc: CURRENT.eSpaceRpc,
     });
-    
+
     // load pool info
     this.loadPoolInfo();
     await this.loadPoolMetaInfo();
@@ -376,7 +377,7 @@ try{
     }
   },
 
-  mounted () {
+  mounted() {
     // toggle visibility of the app element
     const app = document.getElementById('app');
     // app.setAttribute('class', 'container'); // 此处删除gdy
@@ -390,14 +391,14 @@ try{
   },
 
   computed: {
-    IsPC(){
+    IsPC() {
       var userAgentInfo = navigator.userAgent;
-      var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");  
-      var flag = true;  
-      for (var v = 0; v < Agents.length; v++) {  
-          if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }  
-      }  
-      return flag;  
+      var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+      var flag = true;
+      for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
+      }
+      return flag;
     },
     perFee() {
       return (10000n - this.poolInfo.userShareRatio) / 100n;
@@ -477,7 +478,7 @@ try{
         return 4;
       } else if (available >= 100) { // VIP3(10w) 3%
         return 3;
-      } else if (available >= 50){ // VIP2(5w) 4%
+      } else if (available >= 50) { // VIP2(5w) 4%
         return 2;
       } else if (available >= 10) { // VIP1(1w) 5%
         return 1;
@@ -488,16 +489,16 @@ try{
   },
 
   methods: {
-    changeStyle(){
+    changeStyle() {
       if (!this.IsPC) {
-        if(this.lang === 'en') {
+        if (this.lang === 'en') {
           if (this.featuresSH && this.StakeRulesSH) {
             document.body.style.backgroundSize = '100% 18.6rem';
           } else if (this.featuresSH && !this.StakeRulesSH) {
             document.body.style.backgroundSize = '100% 15.35rem';
           } else if (!this.featuresSH && this.StakeRulesSH) {
             document.body.style.backgroundSize = '100% 15.35rem';
-          } else if(!this.featuresSH && !this.StakeRulesSH) {
+          } else if (!this.featuresSH && !this.StakeRulesSH) {
             document.body.style.backgroundSize = '100% 11.8rem';
           }
         } else {
@@ -507,10 +508,10 @@ try{
             document.body.style.backgroundSize = '100% 14.35rem';
           } else if (!this.featuresSH && this.StakeRulesSH) {
             document.body.style.backgroundSize = '100% 14.85rem';
-          } else if(!this.featuresSH && !this.StakeRulesSH) {
+          } else if (!this.featuresSH && !this.StakeRulesSH) {
             document.body.style.backgroundSize = '100% 11.8rem';
           }
-        } 
+        }
       }
     },
     // 时间倒计时
@@ -527,17 +528,17 @@ try{
           } else {
             this.anum = [(25 - _date + '')[0], (25 - _date + '')[1]]
           }
-        } 
+        }
       }
     },
     changeLanguage() {
       this.lang = (this.lang === 'en' ? 'cn' : 'en');
-      localStorage.setItem('language',this.lang);
+      localStorage.setItem('language', this.lang);
     },
     bindAddress() {
       // alert('绑定');
     },
-    
+
     isCore() {
       return this.space.value === 'Core';
     },
@@ -565,62 +566,68 @@ try{
     },
 
     async connectWallet() {
-      if (this.isCore()) {
-        if (!window.conflux) {
-          alert('Please install Conflux Wallet');
-          return;
+      try {
+
+        if (this.isCore()) {
+          if (!window.conflux) {
+            alert('Please install Conflux Wallet');
+            return;
+          }
+          const accounts = await requestCoreAccounts();
+          if (accounts.length === 0) {
+            alert('Request account failed');
+            return;
+          }
+          const account = accounts[0];
+          this.userInfo.account = account;
+          this.userInfo.connected = true;
+          this.coreAccount = account;
+          //
+          await this.loadAllUserInfo();
+          this.loadUserNFTInfo();
+
+          this.contract.setCoreProvider(window.conflux);
+
+          await this.loadCoreChainInfo();
+
+          if (this.chainStatus.chainId !== CURRENT.networkId) {
+            alert('Please switch wallet to ' + CURRENT.networkId);
+            return;
+          }
+        } else {
+          if (typeof window.ethereum === 'undefined') {
+            alert('Please install Metamask');
+            return;
+          }
+          if (ethereum.networkVersion != CURRENT.eNetId) {
+            alert('Please switch wallet to ' + CURRENT.eNetId);
+            return;
+          }
+          const provider = new ethers.providers.Web3Provider(window.ethereum);
+          const accounts = await provider.send("eth_requestAccounts", []);
+          if (accounts.length === 0) {
+            alert('Request account failed');
+            return;
+          }
+          const account = accounts[0];
+
+          this.userInfo.account = account;
+          this.userInfo.connected = true;
+          this.eSpaceAccount = account;
+
+          // TODO watch on account change
+
+          await this.loadAllUserInfo();
+
+          this.contract.setESpaceProvider(provider);
+
+          let blockNumber = await provider.getBlockNumber()
+          this.eSpaceBlockNumber = blockNumber;
         }
-        const accounts = await requestCoreAccounts();
-        if (accounts.length === 0) {
-          alert('Request account failed');
-          return;
-        }
-        const account = accounts[0];
-        this.userInfo.account = account;
-        this.userInfo.connected = true;
-        this.coreAccount = account;
-        //
-        await this.loadAllUserInfo();
-        this.loadUserNFTInfo();
-
-        this.contract.setCoreProvider(window.conflux);
-
-        await this.loadCoreChainInfo();
-
-        if (this.chainStatus.chainId !== CURRENT.networkId) {
-          alert('Please switch wallet to ' + CURRENT.networkId);
-          return;
-        }
-      } else {
-        if (typeof window.ethereum === 'undefined') {
-          alert('Please install Metamask');
-          return;
-        }
-        if (ethereum.networkVersion != CURRENT.eNetId) {
-          alert('Please switch wallet to ' + CURRENT.eNetId);
-          return;
-        }
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const accounts = await provider.send("eth_requestAccounts", []);
-        if (accounts.length === 0) {
-          alert('Request account failed');
-          return;
-        }
-        const account = accounts[0];
-
-        this.userInfo.account = account;
-        this.userInfo.connected = true;
-        this.eSpaceAccount = account;
-
-        // TODO watch on account change
-        
-        await this.loadAllUserInfo();
-
-        this.contract.setESpaceProvider(provider);
-
-        let blockNumber = await provider.getBlockNumber()
-        this.eSpaceBlockNumber = blockNumber;
+      } catch (error) {
+        alert(error)
       }
+
     },
 
     async loadAllUserInfo() {
@@ -683,7 +690,7 @@ try{
     },
 
     async loadLastRewardTime() {
-      const {epoch} = await coreClient.pos.getStatus();
+      const { epoch } = await coreClient.pos.getStatus();
       let lastReward = await coreClient.pos.getRewardsByEpoch(epoch - 1);
       if (!lastReward) {
         lastReward = await coreClient.pos.getRewardsByEpoch(epoch - 2);
@@ -713,7 +720,7 @@ try{
     },
 
     async stake() {
-      if (this.stakeCount === 0 || this.stakeCount % ONE_VOTE_CFX != 0 ) {
+      if (this.stakeCount === 0 || this.stakeCount % ONE_VOTE_CFX != 0) {
         alert('Stake count should be multiple of 1000');
         return;
       }
@@ -738,10 +745,10 @@ try{
           alert('Stake failed');
         }
       });
-    }, 
+    },
 
     async claim() {
-      if (this.userInfo.userInterest == 0 ) {
+      if (this.userInfo.userInterest == 0) {
         alert('No claimable interest');
         return;
       }
@@ -759,14 +766,14 @@ try{
           alert('Claim failed');
         }
       });
-    }, 
+    },
 
     async unstake() {
       if (this.userInfo.locked === BigInt(0)) {
         alert('No unstakeable funds');
         return;
       }
-      if (this.unstakeCount === 0 || this.unstakeCount % ONE_VOTE_CFX != 0 ) {
+      if (this.unstakeCount === 0 || this.unstakeCount % ONE_VOTE_CFX != 0) {
         alert('Unstake count should be multiple of 1000');
         return;
       }
@@ -798,16 +805,16 @@ try{
       }
 
       try {
-        console.log(488,Number(this.userInfo.unlocked),this.userInfo.unlocked,this.userInfo.account,'aaaaaaaaaaaaaaaaa')
+        console.log(488, Number(this.userInfo.unlocked), this.userInfo.unlocked, this.userInfo.account, 'aaaaaaaaaaaaaaaaa')
         let hash = await this
-          .contract    
- .withdrawStake(Number(this.userInfo.unlocked), this.userInfo.account);
-//.withdrawStake(12, this.userInfo.account);
-  // .withdrawStake(this.userInfo.unlocked, this.userInfo.account);
-console.log(492,hash)
+          .contract
+          .withdrawStake(Number(this.userInfo.unlocked), this.userInfo.account);
+        //.withdrawStake(12, this.userInfo.account);
+        // .withdrawStake(this.userInfo.unlocked, this.userInfo.account);
+        console.log(492, hash)
         this.txHash = hash;
         hashModal.show();
-console.log(495)
+        console.log(495)
         this.contract.waitTx(hash).then(receipt => {
           hashModal.hide();
           if (receipt.status === 0) {
@@ -816,8 +823,8 @@ console.log(495)
             alert('Withdraw failed');
           }
         });
-      } catch(err) {
-        console.log(506,err)
+      } catch (err) {
+        console.log(506, err)
         console.log("The unlock time is estimated by PoW block number is not very accurate. Your votes is still unlocking, please try again several hours later", err);
         withdrawModal.show();
       }
