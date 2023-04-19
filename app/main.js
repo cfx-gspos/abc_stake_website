@@ -7,150 +7,154 @@ let withdrawModal = new bootstrap.Modal(document.getElementById('withdrawModal')
 const PoSPool = {
   watch: {
     'lang'(newSpace, old) {
-      if (newSpace == 'en') {
-        this.viewRender = {
-          abccutDown: 'Airdrop ABC countdown',
-          Core: 'Core',
-          eSpace: 'eSpace',
-          Language: 'Language',
-          connectWallet: 'Connnet Wallet',
-          APP: 'ABC PoS Pool',
-          Features: 'Features:',
-          FeaturesList: [
-            '1. Security First, we will NEVER change the contract code from Conflux official team, our KYC info have been provided to Conflux foundation team.',
-            '2. ABC Pool is a fully autonomous DAO organization, 60% of the service fee will be used to reward customers.',
-            '3. Lossless stake to obtain CFX+ABC double income.'
-          ],
-          StakeRules: 'Stake Rules:',
-          StakeRulesList: [
-            'The lock period of Stake/Unstake is 13+1 day(May need another 2~3 hours)',
-            'The reward will updated every hour',
-            'The Stake/Unstake CFX amount must be multiple of 1000',
-            'Performance fee is 8% of the PoS reward',
-            'The reward can be claimed any time'
-          ],
-          StakingVault: 'Staking Vault',
-          TotalEarned: 'Total Earned',
-          ExpectedAPY: 'Expected APY',
-          StakerNumber: 'Staker Number',
-          PoolStatus: 'Pool Status',
-          PoSAddress: 'PoS Address',
-          MyStaked: 'My Staked (CFX)',
-          Balance: 'Balance',
-          MyRewards: 'My Rewards (CFX)',
-          LastUpdate: 'Last Update',
-          Unstakeable: 'Unstakeable',
-          WithdrawableCFX: 'Withdrawable CFX',
-          Stake: 'Stake',
-          Claim: 'Claim',
-          Unstake: 'Unstake',
-          Withdraw: 'Withdraw',
-          Lockingvotes: 'Locking votes',
-          Unlockingvotes: 'Unlocking votes',
-          StakAmount: 'Amount （CFX)',
-          EndTime: 'EndTime',
-          CongratulationsShort: 'Congratulations!',
-          Congratulations: 'The lp address snapshot is completed on March 1st, which has been published on the official website https://confluxpos.cn. Then, a snapshot will be taken every day at varying times. The number of your lp is related to the number of airdropped cfx  CFX/ABC LP provider can earn extra CFX , here is the airdrop list',
-          LPreward: 'CFX/ABC LP reward',
-          //1
-          Clarification: 'Clarification!',
-          Fromthe: 'From the',
-          votinglist: 'voting list',
-          theactual: `The actual vote period is about 63 min(vs estimated 60 min), user have to wait for about 63/60=105% longer to withdraw their asset. Therefore, after stake, you need to wait for at least 13 days+ 15.6hours to unstake, after unstake, you need to wait 1 day+1.2 hours to withdraw.
-                    Stake your CFX in Conflux PoS to help improve the network's finality and earn PoS rewards.`,
-          MobileVersion: 'Mobile Version',
-          //1
-          Emailaddress: 'Email address',
-          Phone: 'Phone',
-          binding: 'binding',
-          Wechat: 'Wechat: DP494935329',
-          QQ: 'QQ: 1027288241',
-          Telegram2: 'Telegram',
-          meurl: 'https://t.me/abcdaohome',
-          Twitter: 'Twitter',
-          TwitterUrl: '@ABCpospool',
-          Telegram: 'Telegram',
-          TelegramYul: 'https://t.me/abcpoolenglish',
-          Binding: 'Binding'
-        };
-        if (this.IsPC) {
-          document.body.setAttribute('class', 'bg-light enLang')
+      try {
+        if (newSpace == 'en') {
+          this.viewRender = {
+            abccutDown: 'Airdrop ABC countdown',
+            Core: 'Core',
+            eSpace: 'eSpace',
+            Language: 'Language',
+            connectWallet: 'Connnet Wallet',
+            APP: 'ABC PoS Pool',
+            Features: 'Features:',
+            FeaturesList: [
+              '1. Security First, we will NEVER change the contract code from Conflux official team, our KYC info have been provided to Conflux foundation team.',
+              '2. ABC Pool is a fully autonomous DAO organization, 60% of the service fee will be used to reward customers.',
+              '3. Lossless stake to obtain CFX+ABC double income.'
+            ],
+            StakeRules: 'Stake Rules:',
+            StakeRulesList: [
+              'The lock period of Stake/Unstake is 13+1 day(May need another 2~3 hours)',
+              'The reward will updated every hour',
+              'The Stake/Unstake CFX amount must be multiple of 1000',
+              'Performance fee is 8% of the PoS reward',
+              'The reward can be claimed any time'
+            ],
+            StakingVault: 'Staking Vault',
+            TotalEarned: 'Total Earned',
+            ExpectedAPY: 'Expected APY',
+            StakerNumber: 'Staker Number',
+            PoolStatus: 'Pool Status',
+            PoSAddress: 'PoS Address',
+            MyStaked: 'My Staked (CFX)',
+            Balance: 'Balance',
+            MyRewards: 'My Rewards (CFX)',
+            LastUpdate: 'Last Update',
+            Unstakeable: 'Unstakeable',
+            WithdrawableCFX: 'Withdrawable CFX',
+            Stake: 'Stake',
+            Claim: 'Claim',
+            Unstake: 'Unstake',
+            Withdraw: 'Withdraw',
+            Lockingvotes: 'Locking votes',
+            Unlockingvotes: 'Unlocking votes',
+            StakAmount: 'Amount （CFX)',
+            EndTime: 'EndTime',
+            CongratulationsShort: 'Congratulations!',
+            Congratulations: 'The lp address snapshot is completed on March 1st, which has been published on the official website https://confluxpos.cn. Then, a snapshot will be taken every day at varying times. The number of your lp is related to the number of airdropped cfx  CFX/ABC LP provider can earn extra CFX , here is the airdrop list',
+            LPreward: 'CFX/ABC LP reward',
+            //1
+            Clarification: 'Clarification!',
+            Fromthe: 'From the',
+            votinglist: 'voting list',
+            theactual: `The actual vote period is about 63 min(vs estimated 60 min), user have to wait for about 63/60=105% longer to withdraw their asset. Therefore, after stake, you need to wait for at least 13 days+ 15.6hours to unstake, after unstake, you need to wait 1 day+1.2 hours to withdraw.
+                      Stake your CFX in Conflux PoS to help improve the network's finality and earn PoS rewards.`,
+            MobileVersion: 'Mobile Version',
+            //1
+            Emailaddress: 'Email address',
+            Phone: 'Phone',
+            binding: 'binding',
+            Wechat: 'Wechat: DP494935329',
+            QQ: 'QQ: 1027288241',
+            Telegram2: 'Telegram',
+            meurl: 'https://t.me/abcdaohome',
+            Twitter: 'Twitter',
+            TwitterUrl: '@ABCpospool',
+            Telegram: 'Telegram',
+            TelegramYul: 'https://t.me/abcpoolenglish',
+            Binding: 'Binding'
+          };
+          if (this.IsPC) {
+            document.body.setAttribute('class', 'bg-light enLang')
+          } else {
+            document.body.setAttribute('class', 'bg-light mobileAbc enLang')
+          }
         } else {
-          document.body.setAttribute('class', 'bg-light mobileAbc enLang')
+          this.viewRender = {
+            abccutDown: '空投ABC倒計時：',
+            Core: 'Core',
+            eSpace: 'eSpace',
+            Language: '语言切换',
+            connectWallet: '连接钱包',
+            APP: 'ABC PoS Pool',
+            Features: '特點：',
+            FeaturesList: [
+              '1. 安全第壹，我們永遠不會改變Conflux基金會合約代碼，我們的身份信息已經提供給基金會作爲備案。',
+              '2. ABC Pool是壹個完全自治的DAO組織，60%的服務費收益用于賦能ABC token',
+              '3. 無損失參與PoS，獲得CFX+ABC雙收益'
+            ],
+            StakeRules: '參與規則：',
+            StakeRulesList: [
+              '參與/退出 鎖定期爲13+1天（可能會需要推遲2-3小時）',
+              'CFX獎勵每小時更新壹次',
+              '參與PoS份額必須是1000CFX的整數倍',
+              '服務費爲PoS收益的8%',
+              'CFX獎勵隨時可以取出'
+            ],
+            StakingVault: '參與總量',
+            TotalEarned: '總收益',
+            ExpectedAPY: '預計年化',
+            StakerNumber: '參與人數',
+            PoolStatus: '狀態',
+            PoSAddress: 'PoS合約地址',
+            MyStaked: '我的參與（CFX）',
+            Balance: '余額',
+            MyRewards: '我的收益 (CFX)',
+            LastUpdate: '更新時間',
+            Unstakeable: '可解鎖',
+            WithdrawableCFX: '可提取CFX',
+            Stake: '投入',
+            Claim: '領取',
+            Unstake: '解鎖',
+            Withdraw: '撤回',
+            Lockingvotes: '鎖定選票',
+            Unlockingvotes: '解鎖選票',
+            StakAmount: '金額（CFX）',
+            EndTime: '結束時間',
+            CongratulationsShort: '恭喜!',
+            Congratulations: 'LP地址快照已經完成，已經在https://confluxpos.cn/mobile/lp.html發布,每天在不同時間隨機快照。妳在Swappi農場內的LP數量與空投CFX數量相關。這是公布的表單',
+            LPreward: 'CFX/ABC LP reward',
+            //1
+            Clarification: '澄清!',
+            Fromthe: '',
+            votinglist: 'voting list',
+            theactual: `從參與開始，實際投票時間約爲63分鍾（預計60分鍾）.用戶必須等待約爲63/60=105%的時間來解鎖，因此，參與後至少需要13天+15.6小時才能解鎖。提取則需要等待1天+1.2小時才能提取。
+            您可以完全放心，您的CFX將投入到Conflux PoS中，以提高網絡的安全性爲前提獲取POS收益`,
+            MobileVersion: '手機版',
+            //1
+            Emailaddress: '郵箱',
+            Phone: '手機號',
+            binding: '綁定',
+            Wechat: 'Wechat: DP494935329',
+            QQ: 'QQ: 1027288241',
+            Telegram2: 'Telegram',
+            meurl: 'https://t.me/abcdaohome',
+            Twitter: 'Twitter',
+            TwitterUrl: '@ABCpospool',
+            Telegram: 'Telegram',
+            TelegramYul: 'https://t.me/abcpoolenglish',
+            Binding: 'Binding'
+          };
+          if (this.IsPC) {
+            document.body.setAttribute('class', 'bg-light cnLang')
+          } else {
+            document.body.setAttribute('class', 'bg-light mobileAbc cnLang')
+          }
         }
-      } else {
-        this.viewRender = {
-          abccutDown: '空投ABC倒計時：',
-          Core: 'Core',
-          eSpace: 'eSpace',
-          Language: '语言切换',
-          connectWallet: '连接钱包',
-          APP: 'ABC PoS Pool',
-          Features: '特點：',
-          FeaturesList: [
-            '1. 安全第壹，我們永遠不會改變Conflux基金會合約代碼，我們的身份信息已經提供給基金會作爲備案。',
-            '2. ABC Pool是壹個完全自治的DAO組織，60%的服務費收益用于賦能ABC token',
-            '3. 無損失參與PoS，獲得CFX+ABC雙收益'
-          ],
-          StakeRules: '參與規則：',
-          StakeRulesList: [
-            '參與/退出 鎖定期爲13+1天（可能會需要推遲2-3小時）',
-            'CFX獎勵每小時更新壹次',
-            '參與PoS份額必須是1000CFX的整數倍',
-            '服務費爲PoS收益的8%',
-            'CFX獎勵隨時可以取出'
-          ],
-          StakingVault: '參與總量',
-          TotalEarned: '總收益',
-          ExpectedAPY: '預計年化',
-          StakerNumber: '參與人數',
-          PoolStatus: '狀態',
-          PoSAddress: 'PoS合約地址',
-          MyStaked: '我的參與（CFX）',
-          Balance: '余額',
-          MyRewards: '我的收益 (CFX)',
-          LastUpdate: '更新時間',
-          Unstakeable: '可解鎖',
-          WithdrawableCFX: '可提取CFX',
-          Stake: '投入',
-          Claim: '領取',
-          Unstake: '解鎖',
-          Withdraw: '撤回',
-          Lockingvotes: '鎖定選票',
-          Unlockingvotes: '解鎖選票',
-          StakAmount: '金額（CFX）',
-          EndTime: '結束時間',
-          CongratulationsShort: '恭喜!',
-          Congratulations: 'LP地址快照已經完成，已經在https://confluxpos.cn/mobile/lp.html發布,每天在不同時間隨機快照。妳在Swappi農場內的LP數量與空投CFX數量相關。這是公布的表單',
-          LPreward: 'CFX/ABC LP reward',
-          //1
-          Clarification: '澄清!',
-          Fromthe: '',
-          votinglist: 'voting list',
-          theactual: `從參與開始，實際投票時間約爲63分鍾（預計60分鍾）.用戶必須等待約爲63/60=105%的時間來解鎖，因此，參與後至少需要13天+15.6小時才能解鎖。提取則需要等待1天+1.2小時才能提取。
-          您可以完全放心，您的CFX將投入到Conflux PoS中，以提高網絡的安全性爲前提獲取POS收益`,
-          MobileVersion: '手機版',
-          //1
-          Emailaddress: '郵箱',
-          Phone: '手機號',
-          binding: '綁定',
-          Wechat: 'Wechat: DP494935329',
-          QQ: 'QQ: 1027288241',
-          Telegram2: 'Telegram',
-          meurl: 'https://t.me/abcdaohome',
-          Twitter: 'Twitter',
-          TwitterUrl: '@ABCpospool',
-          Telegram: 'Telegram',
-          TelegramYul: 'https://t.me/abcpoolenglish',
-          Binding: 'Binding'
-        };
-        if (this.IsPC) {
-          document.body.setAttribute('class', 'bg-light cnLang')
-        } else {
-          document.body.setAttribute('class', 'bg-light mobileAbc cnLang')
-        }
+        this.changeStyle();
+      } catch (error) {
+
       }
-      this.changeStyle();
     },
     'space.value'(newSpace, old) {
       console.log('Space change: ', newSpace);
@@ -365,7 +369,7 @@ const PoSPool = {
       eSpaceAddress: CURRENT.eSpaceAddress,
       eSpaceRpc: CURRENT.eSpaceRpc,
     });
-
+     console.log(372,this.contract)
     // load pool info
     this.loadPoolInfo();
     await this.loadPoolMetaInfo();
@@ -378,27 +382,46 @@ const PoSPool = {
   },
 
   mounted() {
-    // toggle visibility of the app element
-    const app = document.getElementById('app');
-    // app.setAttribute('class', 'container'); // 此处删除gdy
-    if (localStorage.getItem('language')) {
-      this.lang = localStorage.getItem('language');
+    try {
+      this.contract = new PoSPoolContract({
+        network: this.space.value,
+        coreAddress: CURRENT.poolAddress,
+        coreRpc: CURRENT.url,
+        coreNetId: CURRENT.networkId,
+        eSpaceAddress: CURRENT.eSpaceAddress,
+        eSpaceRpc: CURRENT.eSpaceRpc,
+      });
+       console.log(372,this.contract)
+      // toggle visibility of the app element
+      const app = document.getElementById('app');
+      // app.setAttribute('class', 'container'); // 此处删除gdy
+      if (localStorage.getItem('language')) {
+        this.lang = localStorage.getItem('language');
+      }
+      this.getAnum(); // 倒计时
+      if (!this.IsPC) {
+        document.body.setAttribute('class', 'bg-light mobileAbc')
+      }
+    } catch (error) {
+
     }
-    this.getAnum(); // 倒计时
-    if (!this.IsPC) {
-      document.body.setAttribute('class', 'bg-light mobileAbc')
-    }
+
   },
 
   computed: {
     IsPC() {
-      var userAgentInfo = navigator.userAgent;
-      var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
-      var flag = true;
-      for (var v = 0; v < Agents.length; v++) {
-        if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
+      try {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+          if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
+        }
+        return flag;
+      } catch (error) {
+
       }
-      return flag;
+
     },
     perFee() {
       return (10000n - this.poolInfo.userShareRatio) / 100n;
