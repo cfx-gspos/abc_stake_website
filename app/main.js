@@ -315,9 +315,9 @@ const PoSPool = {
       //             console.log(313);
       //     $('#priceCell').val(data.price.toFixed(6))
       // });
-      $('.btnA').click()
+      $('#btnConnectWallet').click()
       $.ajax({
-        url: "https://fccfx.gspos.club/abc_price.json",
+        url: "https://fccfx.gspos.club/home/GetABCPrice",
         type: "GET",
         success: function (data) {
           _that.amount1 = data.price.toFixed(6)

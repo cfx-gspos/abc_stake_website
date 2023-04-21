@@ -40,7 +40,7 @@
       <span v-if="false" class="language" v-on:click="changeLanguage">{{viewRender.Language}}</span>
     
       <div class="connectWallet">
-        <span class="btnA" v-if="!userInfo.connected" v-on:click="connectWallet">{{viewRender.connectWallet}}</span>
+        <span class="btnA" v-if="!userInfo.connected" v-on:click="connectWallet" id="btnConnectWallet">{{viewRender.connectWallet}}</span>
         <div v-else>
           <span class="btnA">
             {{shortenAccount}}
@@ -355,7 +355,7 @@
         <div>
           <img src="./static/images/telegram_logo.png" alt="">
           Telegram
-          <a href="https://t.me/abcdaohome" target="_blank">https://t.me/abcdaohome</a>
+          <a href="https://t.me/abcpoolchinese" target="_blank">https://t.me/abcpoolchinese</a>
         </div>
         <div>
           <img src="./static/images/twitter_logo.png" alt="">
@@ -366,10 +366,6 @@
           {{viewRender.Telegram}} 
           <a href="https://t.me/abcdaohome" target="_blank">{{viewRender.TelegramYul}}</a>
         </div>
-        <div ><a href="https://v1.confluxpos.cn/mobile/" style="
-          margin-top: 20px;
-          margin-right: 20px;
-      ">Old Website </a></div>
       </div>
     </div>
     <div class="footerabc" :class="!IsPC ? 'ismobile' : ''"></div>
