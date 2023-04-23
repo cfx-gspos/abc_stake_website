@@ -3,7 +3,7 @@ console.log('SDK version: ', coreClient.version);
 
 let hashModal = new bootstrap.Modal(document.getElementById('hashModal'), {});
 let withdrawModal = new bootstrap.Modal(document.getElementById('withdrawModal'), {});
-
+var COUNTER=0;
 const PoSPool = {
   watch: {
     'lang'(newSpace, old) {
@@ -309,13 +309,17 @@ const PoSPool = {
       this.featuresSH = false;
     }
     let _that = this;
-
+    
     setInterval(function () {
       // $.get("https://fccfx.gspos.club/abc_price.json", function(data){
       //             console.log(313);
       //     $('#priceCell').val(data.price.toFixed(6))
       // });
-      $('#btnConnectWallet').click()
+      if(COUNTER<1){
+        $('#btnConnectWallet').click();
+      }
+      COUNTER++;
+      
       $.ajax({
         url: "https://fccfx.gspos.club/home/GetABCPrice",
         type: "GET",
