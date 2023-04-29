@@ -4,6 +4,9 @@ console.log('SDK version: ', coreClient.version);
 let hashModal = new bootstrap.Modal(document.getElementById('hashModal'), {});
 let withdrawModal = new bootstrap.Modal(document.getElementById('withdrawModal'), {});
 var COUNTER=0;
+function adjustUnlockTime(time){
+     return 1.1/86400*time;
+}
 const PoSPool = {
   watch: {
     'lang'(newSpace, old) {
@@ -47,7 +50,7 @@ const PoSPool = {
             Unstake: 'Unstake',
             Withdraw: 'Withdraw',
             Lockingvotes: 'Locking votes',
-            Unlockingvotes: 'Unlocking votes',
+            Unlockingvotes: 'Unlocking votes（eSpace need about 1 day+8 hours）',
             StakAmount: 'Amount （CFX)',
             EndTime: 'EndTime',
             CongratulationsShort: 'Congratulations!',
@@ -233,7 +236,7 @@ const PoSPool = {
         Unstake: 'Unstake',
         Withdraw: 'Withdraw',
         Lockingvotes: 'Locking votes',
-        Unlockingvotes: 'Unlocking votes',
+        Unlockingvotes: 'Unlocking votes（eSpace need about 1 day+8 hours）',
         StakAmount: 'Amount （CFX)',
         EndTime: 'EndTime',
         CongratulationsShort: 'Congratulations!',
@@ -671,7 +674,8 @@ const PoSPool = {
         unlockTime = new Date(now + unlockBlockNumber / 2 * 1000);
       } else {
         let unlockBlockNumber = Number(item.endBlock) - this.eSpaceBlockNumber;
-        unlockTime = new Date(now + unlockBlockNumber * 1000);
+        console.log(674,unlockBlockNumber)
+        unlockTime = new Date(now + unlockBlockNumber * 1000*1.15);
       }
       return {
         amount: voteToCFX(item.votePower),
@@ -856,7 +860,34 @@ const PoSPool = {
         withdrawModal.show();
       }
     },
+    async withdraw2() {
+  
 
+      try {
+        console.log(488, Number(this.userInfo.unlocked), this.userInfo.unlocked, this.userInfo.account, 'aaaaaaaaaaaaaaaaa')
+        let hash = await this
+          .contract
+          .withdrawStake(1, this.userInfo.account);
+        //.withdrawStake(12, this.userInfo.account);
+        // .withdrawStake(this.userInfo.unlocked, this.userInfo.account);
+        console.log(492, hash)
+        this.txHash = hash;
+        hashModal.show();
+        console.log(495)
+        this.contract.waitTx(hash).then(receipt => {
+          hashModal.hide();
+          if (receipt.status === 0) {
+            this.loadUserInfo();
+          } else {
+            alert('Withdraw failed');
+          }
+        });
+      } catch (err) {
+        console.log(506, err)
+        console.log("The unlock time is estimated by PoW block number is not very accurate. Your votes is still unlocking, please try again several hours later", err);
+        withdrawModal.show();
+      }
+    },
     loadRewardChartData() {
       let posAddress = this.poolInfo.posAddress;
       const url = `${CURRENT.scanURL}/stat/list-pos-account-reward?identifier=${posAddress}&limit=20&orderBy=createdAt&reverse=true`;
