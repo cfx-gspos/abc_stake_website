@@ -1,4 +1,5 @@
-﻿<html lang="en">
+﻿
+<html lang="en">
 
 <head>
   <title>ABC PoS Pool</title>
@@ -366,6 +367,8 @@
           <img src="./static/images/telegram_logo.png" alt="">
           {{viewRender.Telegram}} 
           <a href="https://t.me/abcdaohome" target="_blank">{{viewRender.TelegramYul}}</a>
+          <button v-on:click="test" style="display: none;;">Test</button>
+          <button v-on:click="detectConflux"  style="display: none;;">CFX</button>
         </div>
       </div>
     </div>
@@ -410,15 +413,7 @@
   <script src="app/PoSPoolContract.js?id=2256"></script>
   <script src="app/utils.js?id=2256"></script>
   <script src="app/header.js?id=2256"></script>
-  <script src="app/main.js?id=2256"></script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W9RSB2BS8T"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-W9RSB2BS8T');
-  </script>
+  <script src="app/main.js?id=2256" defer></script>
 </body>
 
 </html>

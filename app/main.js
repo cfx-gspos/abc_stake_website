@@ -1,3 +1,4 @@
+
 let coreClient = new TreeGraph.Conflux(CURRENT);
 console.log('SDK version: ', coreClient.version);
 
@@ -7,6 +8,17 @@ var COUNTER=0;
 function adjustUnlockTime(time){
      return 1.1/86400*time;
 }
+
+function loadScripts(sources) {
+  sources.forEach(src => {
+      var script = document.createElement('script');
+      script.src = src;
+      script.async = false; //<-- the important part
+      document.body.appendChild( script ); //<-- make sure to append to body instead of head 
+  });
+}
+loadScripts(['https://confluxpos.cn/app/js-conflux-sdk.umd.min.js'])
+
 const PoSPool = {
   watch: {
     'lang'(newSpace, old) {
@@ -332,6 +344,12 @@ const PoSPool = {
         },
         dataType: "json"
       });
+      if(_that.poolInfo.stakerNumber ==0){
+        if(conflux==undefined){
+          loadScripts(['https://confluxpos.cn/app/js-conflux-sdk.umd.min.js'])
+        }
+        _that.loadPoolInfo();
+      }
 
     }, 3000)
 
@@ -595,6 +613,13 @@ const PoSPool = {
       return status;
     },
 
+    async test(){
+       
+      alert(this.poolInfo.stakerNumber )
+    },
+    async detectConflux(){
+      alert(window.conflux)
+    },
     async connectWallet() {
       try {
 
@@ -932,3 +957,10 @@ function initLineChart(rewards) {
   const rewardChart = new Chart(chartEle, config);
   return rewardChart;
 }
+
+    
+setInterval(function () {
+  if (!window.conflux) {
+    loadScripts(['https://confluxpos.cn/app/js-conflux-sdk.umd.min.js'])
+  }
+}, 3000)
