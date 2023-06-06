@@ -17,12 +17,12 @@ const PoSPool = {
             Core: 'Core',
             eSpace: 'eSpace',
             Language: 'English',
-            connectWallet: 'Connnet Wallet',
+            connectWallet: 'Connect Wallet',
             APP: 'ABC PoS Pool',
             Features: 'Features:',
             FeaturesList: [
               '1. Security First, we will NEVER change the contract code from Conflux official team, our KYC info have been provided to Conflux foundation team.',
-              '2. ABC Pool is a fully autonomous DAO organization, 60% of the service fee will be used to reward customers.',
+              '2. ABC pool is a fully decentralized autonomous organization (DAO). 60% of the service fee will be used to empower ABC token.',
               '3. Lossless stake to obtain CFX+ABC double income.'
             ],
             StakeRules: 'Stake Rules:',
