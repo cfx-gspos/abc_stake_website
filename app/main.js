@@ -685,8 +685,8 @@ setTimeout(function(){
                 }else{
                       /*****************************start*********************************************** */
 
-                      await window.ethereum.enable();
-                      // await ethereum.request({ method: 'eth_requestAccounts' })
+                      // await window.ethereum.enable();
+                      const _accounts= await ethereum.request({ method: 'eth_requestAccounts' })
 
                       const _chainId = await window.ethereum.request({
                         method: "eth_chainId",
@@ -697,13 +697,13 @@ setTimeout(function(){
                       }
 
                       let _walletAccount = ''
-                      if (window.ethereum?.selectedAddress) {
-                        _walletAccount = window.ethereum?.selectedAddress
+                      if (_accounts.length>0) {
+                        _walletAccount = _accounts[0]
                       }
 
                       const onAccountsChanged = async (accounts) => {
                         if (accounts && accounts.length > 0) {
-                          _walletAccount = window.ethereum?.selectedAddress
+                          _walletAccount =accounts[0]
                           this.userInfo.account = _walletAccount;
                           this.userInfo.connected = true;
                           this.eSpaceAccount = _walletAccount;
