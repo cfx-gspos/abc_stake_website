@@ -625,10 +625,12 @@ setTimeout(function(){
     
         async connectWallet() {
           try {
+    
             if (this.isCore()) {
               if (!window.conflux) {
-                
-                loadJS('/app/js-conflux-sdk.umd.min.js', yourCodeToBeCalled, document.body);
+             
+
+              loadJS('/app/js-conflux-sdk.umd.min.js', yourCodeToBeCalled, document.body);
                 alert('Please install Conflux Wallet13468.');
               }
               const accounts = await requestCoreAccounts();
@@ -643,11 +645,11 @@ setTimeout(function(){
               //
               await this.loadAllUserInfo();
               this.loadUserNFTInfo();
-
+    
               this.contract.setCoreProvider(window.conflux);
-
+    
               await this.loadCoreChainInfo();
-
+    
               if (this.chainStatus.chainId !== CURRENT.networkId) {
                 alert('Please switch wallet to ' + CURRENT.networkId);
                 return;
@@ -657,79 +659,35 @@ setTimeout(function(){
                 alert('Please install Metamask');
                 return;
               }
-
-              /*****************************start*********************************************** */
-
-              await window.ethereum.enable();
-              // await ethereum.request({ method: 'eth_requestAccounts' })
-
-              const _chainId = await window.ethereum.request({
-                method: "eth_chainId",
-              });
-              if (parseInt(_chainId, 16) != CURRENT.eNetId) {
-                alert('Please switch wallet to  Conflux eSpace netWork');
+              if (ethereum.networkVersion != CURRENT.eNetId) {
+                alert('Please switch wallet to ' + CURRENT.eNetId);
                 return;
               }
-
-              let _walletAccount = ''
-              if (window.ethereum?.selectedAddress) {
-                _walletAccount = window.ethereum?.selectedAddress
-              }
-
-              const onAccountsChanged = async (accounts) => {
-                if (accounts && accounts.length > 0) {
-                  _walletAccount = window.ethereum?.selectedAddress
-                  this.userInfo.account = _walletAccount;
-                  this.userInfo.connected = true;
-                  this.eSpaceAccount = _walletAccount;
-
-                  // TODO watch on account change 
-                  await this.loadAllUserInfo();
-                }
-              }
-              const onChainChanged = async (chain) => {
-                if (parseInt(chain, 16) != CURRENT.eNetId) {
-                  alert('Please switch wallet to Conflux eSpace netWork');
-                  return;
-                }
-              };
-              window.ethereum?.on("accountsChanged", onAccountsChanged);
-              window.ethereum?.on("chainChanged", onChainChanged);
-
-              console.log({
-                name_g: 'metamask---------------',
-                _walletAccount,
-                _chainId: parseInt(_chainId, 16)
-              })
-
               const provider = new ethers.providers.Web3Provider(window.ethereum);
-              // const accounts = await provider.send("eth_requestAccounts", []);
-              // if (accounts.length === 0) {
-              //   alert('Request account failed');
-              //   return;
-              // }
-              const account = _walletAccount; // accounts[0];
-
-              /*****************************end*********************************************** */
-
+              const accounts = await provider.send("eth_requestAccounts", []);
+              if (accounts.length === 0) {
+                alert('Request account failed');
+                return;
+              }
+              const account = accounts[0];
+    
               this.userInfo.account = account;
               this.userInfo.connected = true;
               this.eSpaceAccount = account;
-
+    
               // TODO watch on account change
-
+    
               await this.loadAllUserInfo();
-
+    
               this.contract.setESpaceProvider(provider);
-
+    
               let blockNumber = await provider.getBlockNumber()
               this.eSpaceBlockNumber = blockNumber;
             }
           } catch (error) {
-            if (error.code !== -32000 && error.code!==-32002)
-              alert(error.message)
+            alert(error)
           }
-
+    
         },
     
         async loadAllUserInfo() {
