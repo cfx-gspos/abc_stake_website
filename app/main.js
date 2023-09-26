@@ -655,38 +655,95 @@ setTimeout(function(){
                 return;
               }
             } else {
-              if (typeof window.ethereum === 'undefined') {
-                alert('Please install Metamask');
-                return;
-              }
-              if (ethereum.networkVersion != CURRENT.eNetId) {
-                alert('Please switch wallet to ' + CURRENT.eNetId);
-                return;
-              }
-              const provider = new ethers.providers.Web3Provider(window.ethereum);
-              const accounts = await provider.send("eth_requestAccounts", []);
-              if (accounts.length === 0) {
-                alert('Request account failed');
-                return;
-              }
-              const account = accounts[0];
-    
-              this.userInfo.account = account;
-              this.userInfo.connected = true;
-              this.eSpaceAccount = account;
-    
-              // TODO watch on account change
-    
-              await this.loadAllUserInfo();
-    
-              this.contract.setESpaceProvider(provider);
-    
-              let blockNumber = await provider.getBlockNumber()
-              this.eSpaceBlockNumber = blockNumber;
+                if (typeof window.ethereum === 'undefined') {
+                  alert('Please install Metamask');
+                  return;
+                }
+
+                if (ethereum.networkVersion === CURRENT.eNetId) 
+                {
+                    const provider = new ethers.providers.Web3Provider(window.ethereum);
+                    const accounts = await provider.send("eth_requestAccounts", []);
+                    if (accounts.length === 0) {
+                      alert('Request account failed');
+                      return;
+                    }
+                    const account = accounts[0];
+          
+                    this.userInfo.account = account;
+                    this.userInfo.connected = true;
+                    this.eSpaceAccount = account;
+          
+                    // TODO watch on account change
+          
+                    await this.loadAllUserInfo();
+          
+                    this.contract.setESpaceProvider(provider);
+          
+                    let blockNumber = await provider.getBlockNumber()
+                    this.eSpaceBlockNumber = blockNumber;
+                }else{
+                      /*****************************start*********************************************** */
+
+                      await window.ethereum.enable();
+                      // await ethereum.request({ method: 'eth_requestAccounts' })
+
+                      const _chainId = await window.ethereum.request({
+                        method: "eth_chainId",
+                      });
+                      if (parseInt(_chainId, 16) != CURRENT.eNetId) {
+                        alert('Please switch wallet to  Conflux eSpace netWork');
+                        return;
+                      }
+
+                      let _walletAccount = ''
+                      if (window.ethereum?.selectedAddress) {
+                        _walletAccount = window.ethereum?.selectedAddress
+                      }
+
+                      const onAccountsChanged = async (accounts) => {
+                        if (accounts && accounts.length > 0) {
+                          _walletAccount = window.ethereum?.selectedAddress
+                          this.userInfo.account = _walletAccount;
+                          this.userInfo.connected = true;
+                          this.eSpaceAccount = _walletAccount;
+
+                          // TODO watch on account change 
+                          await this.loadAllUserInfo();
+                        }
+                      }
+                      const onChainChanged = async (chain) => {
+                        if (parseInt(chain, 16) != CURRENT.eNetId) {
+                          alert('Please switch wallet to Conflux eSpace netWork');
+                          return;
+                        }
+                      };
+                      window.ethereum?.on("accountsChanged", onAccountsChanged);
+                      window.ethereum?.on("chainChanged", onChainChanged); 
+
+                      const provider = new ethers.providers.Web3Provider(window.ethereum);
+                      const account = _walletAccount; // accounts[0];
+
+                      /*****************************end*********************************************** */
+
+                      this.userInfo.account = account;
+                      this.userInfo.connected = true;
+                      this.eSpaceAccount = account;
+
+                      // TODO watch on account change
+
+                      await this.loadAllUserInfo();
+
+                      this.contract.setESpaceProvider(provider);
+
+                      let blockNumber = await provider.getBlockNumber()
+                      this.eSpaceBlockNumber = blockNumber;
+                }
             }
           } catch (error) {
-            alert(error)
-          }
+            if (error.code !== -32000 && error.code!==-32002)
+             alert(error.message)
+           }
     
         },
     
