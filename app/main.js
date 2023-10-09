@@ -46,10 +46,10 @@ setTimeout(function(){
                 APP: 'ABC PoS Pool',
                 Features: 'Features:',
                 FeaturesList: [
-                  'xxxx1. Security First, we will NEVER change the contract code from Conflux official team, our KYC info have been provided to Conflux foundation team.',
-                  '2. ABC pool is a fully decentralized autonomous organization (DAO). 60% of the service fee will be used to empower ABC token.',
-                  '3. Lossless stake to obtain CFX+ABC double income.11',
-                  '4.aa'
+                  '1. Security First, we will NEVER change the contract code from Conflux official team, our KYC info have been provided to Conflux foundation team.',
+              '2. ABC Pool is a fully autonomous DAO organization, 60% of the service fee will be used to ABC Token.',
+              '3. Lossless stake to obtain CFX+ABC double income.',
+              '4. Unique wallet CFX changes, email security notification system.<a href="https://email.confluxpos.cn">Email Notification System</a>'
                 ],
                 StakeRules: 'Stake Rules:',
                 StakeRulesList: [
@@ -229,8 +229,8 @@ setTimeout(function(){
             abccutDown: 'Airdrop ABC countdown',
             Core: 'Core',
             eSpace: 'eSpace',
-            Language: 'Language',
-            connectWallet: 'Connnet Wallet',
+            Language: 'English',
+            connectWallet: 'Connet Wallet',
             APP: 'ABC PoS Pool',
             Features: 'Features:',
             FeaturesList: [
