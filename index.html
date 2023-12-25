@@ -12,7 +12,7 @@
   <link href="app/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="app/bootstrap-icons.css">
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/style.css?id=112">
 </head>
 
 <body class="bg-light">
@@ -359,7 +359,7 @@
           <img src="./static/images/twitter_logo.png" alt="">
           {{viewRender.Twitter}} {{viewRender.TwitterUrl}}
         </div>
-     
+        
         <div>
           <img src="./static/images/telegram_logo.png" alt="">
           {{viewRender.Telegram}} 
@@ -367,7 +367,12 @@
           <button v-on:click="test" style="display: none;;">Test</button>
           <button v-on:click="detectConflux"  style="display: none;;">CFX</button>
         </div>
-       
+        <div>
+          <a href="/red/index.html">Red Packet(eSpace)</a>
+        </div>
+        <div>
+          <a href="https://transfertool.confluxpos.cn/">Batch Transfer CFX/ERC20 Token (eSpace)</a>
+        </div>
       </div>
     </div>
     <div class="footerabc" :class="!IsPC ? 'ismobile' : ''"></div>
@@ -414,7 +419,7 @@
   <script src="app/PoSPoolContract.js?id=2256"></script>
   <script src="app/utils.js?id=2256"></script>
   <script src="app/header.js?id=2256"></script>
-  <script src="app/main.js?id=aaa32" defer></script>
+  <script src="app/main.js?id=aaa34" defer></script>
 </body>
 
 </html>

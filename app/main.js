@@ -36,7 +36,7 @@ setTimeout(function(){
       watch: {
         'lang'(newSpace, old) {
           try {
-            if (newSpace == 'en') {
+            if (newSpace == 'en'||true) {
               this.viewRender = {
                 abccutDown: 'Airdrop ABC countdown',
                 Core: 'Core',
@@ -150,7 +150,7 @@ setTimeout(function(){
                 Lockingvotes: '鎖定選票',
                 Unlockingvotes: '解鎖選票',
                 StakAmount: '金額（CFX）',
-                EndTime: '結束時間',
+                EndTime: '結束時間(預估)',
                 CongratulationsShort: '恭喜!',
                 Congratulations: 'LP地址快照已經完成，已經在https://confluxpos.cn/mobile/lp.html發布,每天在不同時間隨機快照。妳在Swappi農場內的LP數量與空投CFX數量相關。這是公布的表單',
                 LPreward: 'CFX/ABC LP reward',
@@ -266,7 +266,7 @@ setTimeout(function(){
             Lockingvotes: 'Locking votes',
             Unlockingvotes: 'Unlocking votes（eSpace need about 1 day+8 hours）',
             StakAmount: 'Amount （CFX)',
-            EndTime: 'EndTime',
+            EndTime: 'EndTime(Estimated)',
             CongratulationsShort: 'Congratulations!',
             Congratulations: 'The LP address snapshot has been completed and published at https://confluxpos.cn/mobile/lp.html, with random snapshots taken every day at different times. Your LP quantity within the Swappi farm is related to the airdropped CFX quantity.',
             LPreward: 'CFX/ABC LP reward',
