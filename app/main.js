@@ -341,7 +341,7 @@ setTimeout(function () {
         }
         let _that = this;
 
-        setInterval(function () {
+        setInterval(async function () {
           // $.get("https://fccfx.gspos.club/abc_price.json", function(data){
           //             console.log(313);
           //     $('#priceCell').val(data.price.toFixed(6))
@@ -351,7 +351,7 @@ setTimeout(function () {
           }
           COUNTER++;
           if (_that.poolInfo.totalLocked == 0) {
-            _that.loadAllUserInfo();
+            await _that.loadAllUserInfo();
           }
 
 
