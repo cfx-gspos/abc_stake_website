@@ -1,4 +1,4 @@
-var loadJS = function(url, implementationCode, location){
+var loadJS = function (url, implementationCode, location) {
   //url is URL of external file, implementationCode is the code
   //to be called from the file, location is the location to 
   //insert the <script> element
@@ -11,26 +11,26 @@ var loadJS = function(url, implementationCode, location){
 
   location.appendChild(scriptTag);
 };
-var yourCodeToBeCalled = function(){
-//your code goes here
+var yourCodeToBeCalled = function () {
+  //your code goes here
 }
 
 
-setTimeout(function(){
+setTimeout(function () {
 
-  $( document ).ready(function() {
- 
- 
+  $(document).ready(function () {
+
+
 
 
     let coreClient = new TreeGraph.Conflux(CURRENT);
     console.log('SDK version: ', coreClient.version);
-    
+
     let hashModal = new bootstrap.Modal(document.getElementById('hashModal'), {});
     let withdrawModal = new bootstrap.Modal(document.getElementById('withdrawModal'), {});
-    var COUNTER=0;
-    function adjustUnlockTime(time){
-         return 1.1/86400*time;
+    var COUNTER = 0;
+    function adjustUnlockTime(time) {
+      return 1.1 / 86400 * time;
     }
     const PoSPool = {
       watch: {
@@ -47,9 +47,9 @@ setTimeout(function(){
                 Features: 'Features:',
                 FeaturesList: [
                   '1. Security First, we will NEVER change the contract code from Conflux official team, our KYC info have been provided to Conflux foundation team.',
-              '2. ABC Pool is a fully autonomous DAO organization, 60% of the service fee will be used to ABC Token.',
-              '3. Lossless stake to obtain CFX+ABC double income.',
-              '4. Unique wallet CFX changes, email security notification system.<a href="https://email.confluxpos.cn">Email Notification System</a>'
+                  '2. ABC Pool is a fully autonomous DAO organization, 60% of the service fee will be used to ABC Token.',
+                  '3. Lossless stake to obtain CFX+ABC double income.',
+                  '4. Unique wallet CFX changes, email security notification system.<a href="https://email.confluxpos.cn">Email Notification System</a>'
                 ],
                 StakeRules: 'Stake Rules:',
                 StakeRulesList: [
@@ -183,7 +183,7 @@ setTimeout(function(){
             }
             this.changeStyle();
           } catch (error) {
-    
+
           }
         },
         'space.value'(newSpace, old) {
@@ -333,43 +333,47 @@ setTimeout(function(){
           coreAccount: '',
         }
       },
-    
+
       async created() {
         if (!this.IsPC) {
           this.StakeRulesSH = false;
           this.featuresSH = false;
         }
         let _that = this;
-        
+
         setInterval(function () {
           // $.get("https://fccfx.gspos.club/abc_price.json", function(data){
           //             console.log(313);
           //     $('#priceCell').val(data.price.toFixed(6))
           // });
-          if(COUNTER<1){
+          if (COUNTER < 1) {
             $('#btnConnectWallet').click();
           }
           COUNTER++;
-          if(_that.poolInfo.totalLocked==0){
+          if (_that.poolInfo.totalLocked == 0) {
             _that.loadAllUserInfo();
           }
+
+
+          $.get('https://evm.confluxscan.net/stat/tokens/list?fields=transferCount&fields=iconUrl&fields=price&fields=totalPrice&fields=quoteUrl&fields=transactionCount&fields=erc20TransferCount&limit=100&orderBy=totalPrice&reverse=true&skip=0&transferType=ERC20', function (data) {
+
+            var list = data.result.list
+            for (var i = 0; i < list.length; i++) {
+              if (list[i].symbol == "ABC") {
+                console.log(parseFloat(list[i].price).toFixed(2))
+                $('#priceCell').html(parseFloat(list[i].price).toFixed(2))
+              }
+            }
+          })
+
           
-          $.ajax({
-            url:"./abc_price.json",
-            type: "GET",
-            success: function (data) {
-              _that.amount1 = data.price.toFixed(6)
-              $('#priceCell').html(_that.amount1)
-            },
-            dataType: "json"
-          });
-    
+
         }, 3000)
-    
+
         // Detect current network
         try {
           if (conflux != undefied && conflux) {
-    
+
             let status = await confluxRequest({ method: 'cfx_getStatus' });
             let netId = Number(status.chainId);
             if (netId === MAINNET.networkId) {
@@ -378,27 +382,27 @@ setTimeout(function(){
               CURRENT = TESTNET;
             }
           } else if (ethereum) {
-    
+
             if (ethereum.networkVersion == MAINNET.eNetId) {
               CURRENT = MAINNET;
             } else if (ethereum.networkVersion == TESTNET.eNetId) {
               CURRENT = TESTNET;
             }
           }
-    
+
         } catch (ex) {
-    
+
           if (ethereum.networkVersion == MAINNET.eNetId) {
             CURRENT = MAINNET;
           } else if (ethereum.networkVersion == TESTNET.eNetId) {
             CURRENT = TESTNET;
           }
-    
+
         }
         console.log('Current network: ', CURRENT);
         this.config.value = CURRENT;
         coreClient = new TreeGraph.Conflux(CURRENT);
-    
+
         this.contract = new PoSPoolContract({
           network: this.space.value,
           coreAddress: CURRENT.poolAddress,
@@ -407,18 +411,18 @@ setTimeout(function(){
           eSpaceAddress: CURRENT.eSpaceAddress,
           eSpaceRpc: CURRENT.eSpaceRpc,
         });
-         console.log(372,this.contract)
+        console.log(372, this.contract)
         // load pool info
         this.loadPoolInfo();
         await this.loadPoolMetaInfo();
         this.loadRewardChartData();
-    
+
         if (CURRENT.networkId === MAINNET.networkId) {
           this.loadLastRewardTime();
           this.loadPosNodeStatus();
         }
       },
-    
+
       mounted() {
         try {
           this.contract = new PoSPoolContract({
@@ -429,7 +433,7 @@ setTimeout(function(){
             eSpaceAddress: CURRENT.eSpaceAddress,
             eSpaceRpc: CURRENT.eSpaceRpc,
           });
-           console.log(372,this.contract)
+          console.log(372, this.contract)
           // toggle visibility of the app element
           const app = document.getElementById('app');
           // app.setAttribute('class', 'container'); // 此处删除gdy
@@ -441,11 +445,11 @@ setTimeout(function(){
             document.body.setAttribute('class', 'bg-light mobileAbc')
           }
         } catch (error) {
-    
+
         }
-    
+
       },
-    
+
       computed: {
         IsPC() {
           try {
@@ -457,46 +461,46 @@ setTimeout(function(){
             }
             return flag;
           } catch (error) {
-    
+
           }
-    
+
         },
         perFee() {
           return (10000n - this.poolInfo.userShareRatio) / 100n;
         },
-    
+
         formatedTotalLocked() {
           return formatUnit(this.poolInfo.totalLocked.toString(), "CFX");
         },
-    
+
         formatedTotalRevenue() {
           return formatUnit(this.poolInfo.totalRevenue.toString(), "CFX");
         },
-    
+
         prettyTotalLocked() {
           const totalLocked = this.poolInfo.totalLocked;
           if (totalLocked === 0) return 0;
           return prettyFormat(totalLocked.toString());
         },
-    
+
         prettyTotalRevenue() {
           const totalRevenue = this.poolInfo.totalRevenue;
           if (totalRevenue == 0) return 0;
           return prettyFormat(totalRevenue.toString());
         },
-    
+
         userStakedCFX() {
           return this.userInfo.votes * BigInt(ONE_VOTE_CFX);
         },
-    
+
         unstakeableCFX() {
           return this.userInfo.locked * BigInt(ONE_VOTE_CFX);
         },
-    
+
         withdrawableCFX() {
           return this.userInfo.unlocked * BigInt(ONE_VOTE_CFX);
         },
-    
+
         shortenAccount() {
           const account = this.userInfo.account;
           if (account.match(':')) {
@@ -505,12 +509,12 @@ setTimeout(function(){
             return `${account.slice(0, 4)}...${account.slice(-4)}`;
           }
         },
-    
+
         lastRewardTime() {
           const lastTime = new Date(this.poolInfo.lastRewardTime * 1000);
           return formatDateTime(lastTime);
         },
-    
+
         shortPosAddress() {
           if (!this.poolInfo.posAddress) {
             return 'Loading...';
@@ -518,21 +522,21 @@ setTimeout(function(){
           const start = this.poolInfo.posAddress.slice(0, 6);
           return `${start}...`;
         },
-    
+
         posAddressLink() {
           return `${CURRENT.scanURL}/pos/accounts/${this.poolInfo.posAddress}`;
         },
-    
+
         shortHash() {
           if (!this.txhash) return '';
           return this.txhash.slice(0, 10) + '...';
         },
-    
+
         txScanLink() {
           if (!this.txhash) return '#';
           return `${CURRENT.scanURL}/transaction/${this.txHash}`;
         },
-    
+
         vip() {
           const available = this.userInfo.available;
           if (available >= 1000) { // VIP4(100w) 2%
@@ -548,7 +552,7 @@ setTimeout(function(){
           }
         }
       },
-    
+
       methods: {
         changeStyle() {
           if (!this.IsPC) {
@@ -599,11 +603,11 @@ setTimeout(function(){
         bindAddress() {
           // alert('绑定');
         },
-    
+
         isCore() {
           return this.space.value === 'Core';
         },
-    
+
         resetUserInfo() {
           this.userInfo = {
             balance: 0,
@@ -619,21 +623,21 @@ setTimeout(function(){
             nftCount: 0,
           };
         },
-    
+
         async loadCoreChainInfo() {
           const status = await coreClient.cfx.getStatus();
           this.chainStatus = status;
           return status;
         },
-    
+
         async connectWallet() {
           try {
-    
+
             if (this.isCore()) {
               if (!window.conflux) {
-             
 
-              loadJS('/app/js-conflux-sdk.umd.min.js', yourCodeToBeCalled, document.body);
+
+                loadJS('/app/js-conflux-sdk.umd.min.js', yourCodeToBeCalled, document.body);
                 alert('Please install Conflux Wallet13468.');
               }
               const accounts = await requestCoreAccounts();
@@ -648,114 +652,113 @@ setTimeout(function(){
               //
               await this.loadAllUserInfo();
               this.loadUserNFTInfo();
-    
+
               this.contract.setCoreProvider(window.conflux);
-    
+
               await this.loadCoreChainInfo();
-    
+
               if (this.chainStatus.chainId !== CURRENT.networkId) {
                 alert('Please switch wallet to ' + CURRENT.networkId);
                 return;
               }
             } else {
-                if (typeof window.ethereum === 'undefined') {
-                  alert('Please install Metamask');
+              if (typeof window.ethereum === 'undefined') {
+                alert('Please install Metamask');
+                return;
+              }
+
+              if (ethereum.networkVersion === CURRENT.eNetId) {
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                const accounts = await provider.send("eth_requestAccounts", []);
+                if (accounts.length === 0) {
+                  alert('Request account failed');
+                  return;
+                }
+                const account = accounts[0];
+
+                this.userInfo.account = account;
+                this.userInfo.connected = true;
+                this.eSpaceAccount = account;
+
+                // TODO watch on account change
+
+                await this.loadAllUserInfo();
+
+                this.contract.setESpaceProvider(provider);
+
+                let blockNumber = await provider.getBlockNumber()
+                this.eSpaceBlockNumber = blockNumber;
+              } else {
+                /*****************************start*********************************************** */
+
+                // await window.ethereum.enable();
+                const _accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+
+                const _chainId = await window.ethereum.request({
+                  method: "eth_chainId",
+                });
+                if (parseInt(_chainId, 16) != CURRENT.eNetId) {
+                  alert('Please switch wallet to  Conflux eSpace netWork');
                   return;
                 }
 
-                if (ethereum.networkVersion === CURRENT.eNetId) 
-                {
-                    const provider = new ethers.providers.Web3Provider(window.ethereum);
-                    const accounts = await provider.send("eth_requestAccounts", []);
-                    if (accounts.length === 0) {
-                      alert('Request account failed');
-                      return;
-                    }
-                    const account = accounts[0];
-          
-                    this.userInfo.account = account;
-                    this.userInfo.connected = true;
-                    this.eSpaceAccount = account;
-          
-                    // TODO watch on account change
-          
-                    await this.loadAllUserInfo();
-          
-                    this.contract.setESpaceProvider(provider);
-          
-                    let blockNumber = await provider.getBlockNumber()
-                    this.eSpaceBlockNumber = blockNumber;
-                }else{
-                      /*****************************start*********************************************** */
-
-                      // await window.ethereum.enable();
-                      const _accounts= await ethereum.request({ method: 'eth_requestAccounts' })
-
-                      const _chainId = await window.ethereum.request({
-                        method: "eth_chainId",
-                      });
-                      if (parseInt(_chainId, 16) != CURRENT.eNetId) {
-                        alert('Please switch wallet to  Conflux eSpace netWork');
-                        return;
-                      }
-
-                      let _walletAccount = ''
-                      if (_accounts.length>0) {
-                        _walletAccount = _accounts[0]
-                      }
-
-                      const onAccountsChanged = async (accounts) => {
-                        if (accounts && accounts.length > 0) {
-                          _walletAccount =accounts[0]
-                          this.userInfo.account = _walletAccount;
-                          this.userInfo.connected = true;
-                          this.eSpaceAccount = _walletAccount;
-
-                          // TODO watch on account change 
-                          await this.loadAllUserInfo();
-                        }
-                      }
-                      const onChainChanged = async (chain) => {
-                        if (parseInt(chain, 16) != CURRENT.eNetId) {
-                          alert('Please switch wallet to Conflux eSpace netWork');
-                          return;
-                        }
-                      };
-                      window.ethereum?.on("accountsChanged", onAccountsChanged);
-                      window.ethereum?.on("chainChanged", onChainChanged); 
-
-                      const provider = new ethers.providers.Web3Provider(window.ethereum);
-                      const account = _walletAccount; // accounts[0];
-
-                      /*****************************end*********************************************** */
-
-                      this.userInfo.account = account;
-                      this.userInfo.connected = true;
-                      this.eSpaceAccount = account;
-
-                      // TODO watch on account change
-
-                      await this.loadAllUserInfo();
-
-                      this.contract.setESpaceProvider(provider);
-
-                      let blockNumber = await provider.getBlockNumber()
-                      this.eSpaceBlockNumber = blockNumber;
+                let _walletAccount = ''
+                if (_accounts.length > 0) {
+                  _walletAccount = _accounts[0]
                 }
+
+                const onAccountsChanged = async (accounts) => {
+                  if (accounts && accounts.length > 0) {
+                    _walletAccount = accounts[0]
+                    this.userInfo.account = _walletAccount;
+                    this.userInfo.connected = true;
+                    this.eSpaceAccount = _walletAccount;
+
+                    // TODO watch on account change 
+                    await this.loadAllUserInfo();
+                  }
+                }
+                const onChainChanged = async (chain) => {
+                  if (parseInt(chain, 16) != CURRENT.eNetId) {
+                    alert('Please switch wallet to Conflux eSpace netWork');
+                    return;
+                  }
+                };
+                window.ethereum?.on("accountsChanged", onAccountsChanged);
+                window.ethereum?.on("chainChanged", onChainChanged);
+
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                const account = _walletAccount; // accounts[0];
+
+                /*****************************end*********************************************** */
+
+                this.userInfo.account = account;
+                this.userInfo.connected = true;
+                this.eSpaceAccount = account;
+
+                // TODO watch on account change
+
+                await this.loadAllUserInfo();
+
+                this.contract.setESpaceProvider(provider);
+
+                let blockNumber = await provider.getBlockNumber()
+                this.eSpaceBlockNumber = blockNumber;
+              }
             }
           } catch (error) {
-            if (error.code !== -32000 && error.code!==-32002)
-             alert(error.message)
-           }
-    
+            if (error.code !== -32000 && error.code !== -32002)
+              alert(error.message)
+          }
+
         },
-    
+
         async loadAllUserInfo() {
           this.loadUserInfo();
           this.loadUserLockingList();
           this.loadUserUnlockingList();
         },
-    
+
         mapQueueItem(item) {
           let now = new Date().getTime();
           let unlockTime;
@@ -764,29 +767,29 @@ setTimeout(function(){
             unlockTime = new Date(now + unlockBlockNumber / 2 * 1000);
           } else {
             let unlockBlockNumber = Number(item.endBlock) - this.eSpaceBlockNumber;
-            console.log(674,unlockBlockNumber)
-            unlockTime = new Date(now + unlockBlockNumber * 1000*1.15);
+            console.log(674, unlockBlockNumber)
+            unlockTime = new Date(now + unlockBlockNumber * 1000 * 1.15);
           }
           return {
             amount: voteToCFX(item.votePower),
             endTime: formatDateTime(unlockTime),
           }
         },
-    
+
         async loadUserInfo() {
           const userSummary = await this.contract.userSummary(this.userInfo.account);
           this.userInfo.votes = userSummary.votes;
           this.userInfo.available = userSummary.available;
           this.userInfo.locked = userSummary.locked;
           this.userInfo.unlocked = userSummary.unlocked;
-    
+
           const userInterest = await this.contract.userInterest(this.userInfo.account);
           this.userInfo.userInterest = trimPoints(TreeGraph.Drip(userInterest.toString()).toCFX());
-    
+
           const balance = await this.contract.getBalance(this.userInfo.account);
           this.userInfo.balance = trimPoints(TreeGraph.Drip(balance.toString()).toCFX());
         },
-    
+
         // only need load once
         async loadPoolMetaInfo() {
           this.poolInfo.name = await this.contract.poolName();
@@ -794,22 +797,22 @@ setTimeout(function(){
           let poolPosAddress = await this.contract.posAddress();
           this.poolInfo.posAddress = TreeGraph.format.hex(poolPosAddress);
         },
-    
+
         async loadPosNodeStatus() {
           const account = await coreClient.pos.getAccount(this.poolInfo.posAddress);
           this.poolInfo.status = account.status;
         },
-    
+
         async loadPoolInfo() {
           const poolSummary = await this.contract.poolSummary();
           this.poolInfo.totalLocked = poolSummary.available * BigInt(ONE_VOTE_CFX) * BigInt("1000000000000000000");
           this.poolInfo.totalRevenue = poolSummary.totalInterest;
           this.poolInfo.apy = Number(await this.contract.poolAPY()) / 100;
-    
+
           const stakerNumber = await this.contract.stakerNumber();
           this.poolInfo.stakerNumber = stakerNumber.toString();
         },
-    
+
         async loadLastRewardTime() {
           const { epoch } = await coreClient.pos.getStatus();
           let lastReward = await coreClient.pos.getRewardsByEpoch(epoch - 1);
@@ -819,17 +822,17 @@ setTimeout(function(){
           const block = await coreClient.cfx.getBlockByHash(lastReward.powEpochHash, false);
           this.poolInfo.lastRewardTime = block.timestamp;
         },
-    
+
         async loadUserLockingList() {
           let list = await this.contract.userInQueue(this.userInfo.account);
           this.userInfo.userInQueue = list.map(this.mapQueueItem);
         },
-    
+
         async loadUserUnlockingList() {
           let list = await this.contract.userOutQueue(this.userInfo.account);
           this.userInfo.userOutOueue = list.map(this.mapQueueItem);
         },
-    
+
         async loadUserNFTInfo() {
           if (!CURRENT.nftAddress) return;
           nftContract = coreClient.Contract({
@@ -839,7 +842,7 @@ setTimeout(function(){
           const count = await nftContract.balanceOf(this.userInfo.account);
           this.userInfo.nftCount = Number(count.toString());
         },
-    
+
         async stake() {
           if (this.stakeCount === 0 || this.stakeCount % ONE_VOTE_CFX != 0) {
             alert('Stake count should be multiple of 1000');
@@ -849,13 +852,13 @@ setTimeout(function(){
             alert('Insufficient balance');
             return;
           }
-    
+
           const hash = await this
             .contract
             .increaseStake(this.stakeCount, this.userInfo.account);
           this.txHash = hash;
           hashModal.show();
-    
+
           this.contract.waitTx(hash).then(receipt => {
             hashModal.hide();
             if (receipt.status === 0) { // success
@@ -867,7 +870,7 @@ setTimeout(function(){
             }
           });
         },
-    
+
         async claim() {
           if (this.userInfo.userInterest == 0) {
             alert('No claimable interest');
@@ -878,7 +881,7 @@ setTimeout(function(){
             .claimAllInterest(this.userInfo.account);
           this.txHash = hash;
           hashModal.show();
-    
+
           this.contract.waitTx(hash).then(receipt => {
             hashModal.hide();
             if (receipt.status === 0) {
@@ -888,7 +891,7 @@ setTimeout(function(){
             }
           });
         },
-    
+
         async unstake() {
           if (this.userInfo.locked === BigInt(0)) {
             alert('No unstakeable funds');
@@ -899,14 +902,14 @@ setTimeout(function(){
             return;
           }
           const unstakeVotePower = this.unstakeCount / ONE_VOTE_CFX;
-    
+
           let hash = await this
             .contract
             .decreaseStake(unstakeVotePower, this.userInfo.account);
-    
+
           this.txHash = hash;
           hashModal.show();
-    
+
           this.contract.waitTx(hash).then(receipt => {
             hashModal.hide();
             if (receipt.status === 0) {
@@ -918,13 +921,13 @@ setTimeout(function(){
             }
           });
         },
-    
+
         async withdraw() {
           if (this.userInfo.unlocked === BigInt(0)) {
             alert('No withdrawable funds');
             return;
           }
-    
+
           try {
             console.log(488, Number(this.userInfo.unlocked), this.userInfo.unlocked, this.userInfo.account, 'aaaaaaaaaaaaaaaaa')
             let hash = await this
@@ -951,8 +954,8 @@ setTimeout(function(){
           }
         },
         async withdraw2() {
-      
-    
+
+
           try {
             console.log(488, Number(this.userInfo.unlocked), this.userInfo.unlocked, this.userInfo.account, 'aaaaaaaaaaaaaaaaa')
             let hash = await this
@@ -987,9 +990,9 @@ setTimeout(function(){
         }
       }
     };
-    
+
     Vue.createApp(PoSPool).mount('#app');
-    
+
     function initLineChart(rewards) {
       return;
       const { list } = rewards;
@@ -1000,7 +1003,7 @@ setTimeout(function(){
         const onlyValue = formated.split(' ')[0];
         return Number(onlyValue);
       });
-    
+
       const data = {
         labels: labels.reverse(),
         datasets: [{
@@ -1010,25 +1013,24 @@ setTimeout(function(){
           data: items.reverse(),
         }]
       };
-    
+
       const config = {
         type: 'line',
         data: data,
         options: {}
       };
-    
+
       document.getElementById('rewardChartContainer').removeAttribute('style');
       const chartEle = document.getElementById('rewardChart')
       const rewardChart = new Chart(chartEle, config);
       return rewardChart;
     }
-  
-  
-  });
-  
-  
-   
 
-},1000) 
- 
-  
+
+  });
+
+
+
+
+}, 1000)
+
