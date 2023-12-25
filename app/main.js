@@ -350,6 +350,9 @@ setTimeout(function(){
             $('#btnConnectWallet').click();
           }
           COUNTER++;
+          if(_that.poolInfo.totalLocked==0){
+            _that.loadAllUserInfo();
+          }
           
           $.ajax({
             url:"./abc_price.json",
