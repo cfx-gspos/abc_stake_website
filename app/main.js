@@ -350,9 +350,14 @@ setTimeout(function () {
             $('#btnConnectWallet').click();
           }
           COUNTER++;
-          if (_that.poolInfo.totalLocked == 0) {
-            await _that.loadAllUserInfo();
+          try {
+            if (_that.poolInfo.totalLocked == 0) {
+              await _that.loadAllUserInfo();
+            }
+          } catch (error) {
+            
           }
+       
 
 
           $.get('https://evm.confluxscan.net/stat/tokens/list?fields=transferCount&fields=iconUrl&fields=price&fields=totalPrice&fields=quoteUrl&fields=transactionCount&fields=erc20TransferCount&limit=100&orderBy=totalPrice&reverse=true&skip=0&transferType=ERC20', function (data) {
