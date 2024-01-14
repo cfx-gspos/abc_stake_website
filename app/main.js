@@ -125,7 +125,7 @@ setTimeout(function () {
                 ],
                 StakeRules: '參與規則：',
                 StakeRulesList: [
-                  '參與/退出 鎖定期預估為13➕1天 （以實際區塊高度為準）',
+                  '參與/退出 鎖定期預估為Core 13➕1天,eSpace 16➕3 天（以實際區塊高度為準）',
                   'CFX獎勵每半小時更新壹次',
                   '參與PoS份額必須是1000CFX的整數倍',
                   '服務費爲PoS收益的8%',
@@ -241,7 +241,7 @@ setTimeout(function () {
             ],
             StakeRules: 'Stake Rules:',
             StakeRulesList: [
-              'The lock period of Stake/Unstake is 13+1 day(May need another 2~3 hours)',
+              'The lock period of Stake/Unstake is Core 13+1 days ,eSpace 16+3 days (May need another 2~3 hours)',
               'The reward will updated every half an hour',
               'The Stake/Unstake CFX amount must be multiple of 1000',
               'Performance fee is 8% of the PoS reward',
