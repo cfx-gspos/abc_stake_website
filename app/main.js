@@ -121,7 +121,7 @@ setTimeout(function () {
                   '1. 安全第壹，我們永遠不會改變Conflux基金會合約代碼，我們的身份信息已經提供給基金會作爲備案。',
                   '2. ABC Pool是壹個完全自治的DAO組織，60%的服務費收益用于賦能ABC token',
                   '3. 無損失參與PoS，獲得CFX+ABC雙收益',
-                  '4. 独创的钱包cfx变动、邮箱安全通知系统，绑定邮箱链接 <a href="https://email.confluxpos.cn">Email Notification System</a>'
+                  '4. 獨創的錢包cfx變動、郵箱安全通知系統，綁定郵箱連結 <a href="https://email.confluxpos.cn">Email Notification System</a>'
                 ],
                 StakeRules: '參與規則：',
                 StakeRulesList: [
