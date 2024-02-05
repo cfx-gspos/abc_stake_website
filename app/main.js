@@ -36,7 +36,7 @@ setTimeout(function () {
       watch: {
         'lang'(newSpace, old) {
           try {
-            if (newSpace == 'en') {
+            if (newSpace == 'en'||true) {
               this.viewRender = {
                 abccutDown: 'Airdrop ABC countdown',
                 Core: 'Core',
