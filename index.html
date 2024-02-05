@@ -31,7 +31,7 @@
           <li ><a href="https://confluxpos.com" style="
     margin-left: 5px;
     color: magenta;
-" >备</a></li>
+" >Bak</a></li>
         </ul>
       </div>
     </div>
@@ -41,8 +41,8 @@
 
     <div class="lc">
      
-      <span class="language" v-on:click="changeLanguage">{{viewRender.Language}}</span>
-      <span v-if="false" class="language" v-on:click="changeLanguage">{{viewRender.Language}}</span>
+      <span class="language" v-on:click="changeLanguage" style="display:none;">{{viewRender.Language}}</span>
+      <span v-if="false" class="language" v-on:click="changeLanguage"  style="display:none;">{{viewRender.Language}}</span>
     
       <div class="connectWallet">
         <span class="btnA" v-if="!userInfo.connected" v-on:click="connectWallet" id="btnConnectWallet">{{viewRender.connectWallet}}</span>
