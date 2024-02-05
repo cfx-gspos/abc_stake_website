@@ -110,70 +110,7 @@ setTimeout(function () {
               }
             } else {
               this.viewRender = {
-                abccutDown: '空投ABC倒計時：',
-                Core: 'Core',
-                eSpace: 'eSpace',
-                Language: '繁體中文',
-                connectWallet: '连接钱包',
-                APP: 'ABC PoS Pool',
-                Features: '特點：',
-                FeaturesList: [
-                  '1. 安全第壹，我們永遠不會改變Conflux基金會合約代碼，我們的身份信息已經提供給基金會作爲備案。',
-                  '2. ABC Pool是壹個完全自治的DAO組織，60%的服務費收益用于賦能ABC token',
-                  '3. 無損失參與PoS，獲得CFX+ABC雙收益',
-                  '4. 獨創的錢包cfx變動、郵箱安全通知系統，綁定郵箱連結 <a href="https://email.confluxpos.cn">Email Notification System</a>'
-                ],
-                StakeRules: '參與規則：',
-                StakeRulesList: [
-                  '參與/退出 鎖定期預估為Core 13➕1天,eSpace 16➕3 天（以實際區塊高度為準）',
-                  'CFX獎勵每半小時更新壹次',
-                  '參與PoS份額必須是1000CFX的整數倍',
-                  '服務費爲PoS收益的8%',
-                  'CFX獎勵隨時可以取出'
-                ],
-                StakingVault: '參與總量',
-                TotalEarned: '總收益',
-                ExpectedAPY: '預計年化',
-                StakerNumber: '參與人數',
-                PoolStatus: '狀態',
-                PoSAddress: 'PoS合約地址',
-                MyStaked: '我的參與（CFX）',
-                Balance: '余額',
-                MyRewards: '我的收益 (CFX)',
-                LastUpdate: '更新時間',
-                Unstakeable: '可解鎖',
-                WithdrawableCFX: '可提取CFX',
-                Stake: '投入',
-                Claim: '領取',
-                Unstake: '解鎖',
-                Withdraw: '撤回',
-                Lockingvotes: '鎖定選票',
-                Unlockingvotes: '解鎖選票',
-                StakAmount: '金額（CFX）',
-                EndTime: '結束時間(預估)',
-                CongratulationsShort: '恭喜!',
-                Congratulations: 'LP地址快照已經完成，已經在https://confluxpos.cn/mobile/lp.html發布,每天在不同時間隨機快照。妳在Swappi農場內的LP數量與空投CFX數量相關。這是公布的表單',
-                LPreward: 'CFX/ABC LP reward',
-                //1
-                Clarification: '澄清!',
-                Fromthe: '',
-                votinglist: 'voting list',
-                theactual: `從參與開始，實際投票時間約爲63分鍾（預計60分鍾）.用戶必須等待約爲63/60=105%的時間來解鎖，因此，參與後至少需要13天+15.6小時才能解鎖。提取則需要等待1天+1.2小時才能提取。
-                您可以完全放心，您的CFX將投入到Conflux PoS中，以提高網絡的安全性爲前提獲取POS收益`,
-                MobileVersion: '手機版',
-                //1
-                Emailaddress: '郵箱',
-                Phone: '手機號',
-                binding: '綁定',
-                Wechat: 'Wechat: DP494935329',
-                QQ: 'QQ: 1027288241',
-                Telegram2: 'Telegram',
-                meurl: 'https://t.me/abcdaohome',
-                Twitter: 'Twitter',
-                TwitterUrl: '@ABCpospool',
-                Telegram: 'Telegram',
-                TelegramYul: 'https://t.me/abcpoolenglish',
-                Binding: 'Binding'
+            
               };
               if (this.IsPC) {
                 document.body.setAttribute('class', 'bg-light cnLang')
