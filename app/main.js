@@ -208,11 +208,12 @@ setTimeout(function () {
             Congratulations: 'The LP address snapshot has been completed and published at https://confluxpos.cn/mobile/lp.html, with random snapshots taken every day at different times. Your LP quantity within the Swappi farm is related to the airdropped CFX quantity.',
             LPreward: 'CFX/ABC LP reward',
             //1
-            Clarification: 'Clarification!',
+            Clarification: 'Stake ABC',
             Fromthe: 'From the',
             votinglist: 'voting list',
-            theactual: `The actual vote period is about 63 min(vs estimated 60 min), user have to wait for about 63/60=105% longer to withdraw their asset. Therefore, after stake, you need to wait for at least 13 days+ 15.6hours to unstake, after unstake, you need to wait 1 day+1.2 hours to withdraw.
-                      Stake your CFX in Conflux PoS to help improve the network's finality and earn PoS rewards.`,
+            theactual: `1. The input of ABC is completely lossless.<br/>
+2. The obtained returns need to be withdrawn together with ABC at the end of the lock-in period. <br/>
+3. If no manual exit is made within 24 hours after the lock-in period ends, it will automatically default to the next round.<br/>`,
             MobileVersion: 'Mobile Version',
             //1
             Emailaddress: 'Email address',
