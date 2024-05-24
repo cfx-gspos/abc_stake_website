@@ -2,24 +2,24 @@
 <html lang="en">
 
 <head>
-  <title>ABC PoS Pool</title>
+  <title>ABC PoS Pool V1</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A stable, safe, decentralized, easy to use Conflux PoS Pool">
   <meta name="keywords" content="Conflux, PoS, Pool, ABC, decentralized">
   <meta content="width=device-width,initial-scale=1.0,maxinmum-scale=1.0,user-scalable=0" name="viewport">
-  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="shortcut icon" href="https://abc-stake-website.pages.dev/favicon.ico">
   <link href="app/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="app/bootstrap-icons.css">
-  <link rel="stylesheet" href="styles/style.css?id=112">
+  <link rel="stylesheet" href="https://cdn.staticfile.net/bootstrap-icons/1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="styles/style.css?id=113">
 </head>
 
 <body class="bg-light">
 
   <nav id="navbar">
     <div class="flexbox boxone">
-      <img src="./static/images/logo@2x.png" style="cursor: pointer" alt="">
+      <img src="https://abc-stake-website.pages.dev/static/images/logo@2x.png" style="cursor: pointer" alt="">
       <div id="navbarSupportedContent">
         <ul>
           <li @click="changeSpace('Core')" class="mr" :class="`${space.value == 'Core' ? 'currnav' : ''}`">
@@ -28,10 +28,10 @@
           <li v-if="config.value.eSpaceAddress" @click="changeSpace('eSpace')" :class="`${space.value == 'eSpace' ? 'currnav' : ''}`">
             eSpace
           </li>
-          <li ><a href="/abc.png" style="
+          <li ><a href="https://confluxpos.cn/mobile/" style="
     margin-left: 5px;
     color: magenta;
-" >Help</a></li>
+" >Old</a></li>
         </ul>
       </div>
     </div>
@@ -60,7 +60,7 @@
     </div>
     <!-- 头部描述s -->
     <div class="pdlr120" :class="!IsPC ? 'ismobile' : ''">
-      <div class="abcp">ABC PoS Pool</div>
+      <div class="abcp">ABC PoS Pool V1</div>
       <div class="abcbox">
         <div class="one">
           <div class="featuresbox">
@@ -315,10 +315,12 @@
     <div class="Congratulationsbox" :class="!IsPC ? 'ismobile' : ''">
       <div class="Congratulationsboxinner">
         <div class="innnerabc">
-          <div style="margin-bottom: 0.18rem;"><strong>{{viewRender.CongratulationsShort}}</strong></div>
-          <span>{{viewRender.Congratulations}} </span>
-          <br>
-          <a href="http://39.98.218.160:8001/mobile/lp.html"> ABC/CFX LP reward </a>
+ 
+ <h3><a href='https://v2.confluxpos.cn'>ABC Pool V2</a></h3>
+1. Participants' PoS earnings will be automatically converted to LP of ABC/CFX! <br/>
+2. Extracting LP to Swappi can enjoy CFX airdrops and Get PPI!  <br/>
+3. APY(Estimate) ＞20%. <br/>
+
         </div>
       </div>
     </div>
