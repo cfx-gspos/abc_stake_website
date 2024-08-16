@@ -1,5 +1,20 @@
-﻿const MAINNET ={
-  url: 'https://main.confluxrpc.com',
+function getParameterByName(name, url = window.location.href) {
+  name = name.replace(/[\[\]]/g, '\\$&');
+  const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+  const results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+const rpc = getParameterByName('rpc'); // 'John'
+var url='https://main.confluxrpc.com';
+if(rpc){
+url=rpc;
+}
+
+const MAINNET ={
+  url: url,
   networkId: 1029,
   poolAddress: 'cfx:accpx9uxky39pg1hzav757vdej95w1kbcp13d0hvm7',
   scanURL: 'https://confluxscan.io',
