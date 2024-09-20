@@ -1,4 +1,4 @@
-function getParameterByName(name, url = window.location.href) {
+﻿function getParameterByName(name, url = window.location.href) {
   name = name.replace(/[\[\]]/g, '\\$&');
   const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
   const results = regex.exec(url);

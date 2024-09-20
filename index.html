@@ -409,23 +409,43 @@
       }  
     }
   </script>
-  <script src="app/jquery.min.js"></script>
-  <script src="app/vue.global.js"></script>
-  <script src='app/big.min.js'></script>
-  <script src="app/js-conflux-sdk.umd.min.js"></script>
-  <script>
-    
-  </script>
-  <script src="app/ethers-5.2.umd.min.js" type="application/javascript"></script>
-  <script src="app/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-  <script src="app/chart.js"></script>
-  <script src="app/PoolABI.js?id=2256"></script>
-  <script src="app/PoSPoolContract.js?id=2256"></script>
-  <script src="app/utils.js?id=2256"></script>
-  <script src="app/header.js?id=2256"></script>
-  <script src="app/main.js?id=aaa35" defer></script>
+    <script>
+var obj={'a1':'app/jquery.min.js','a2':'app/vue.global.js','a3':'app/big.min.js'
+,'a4':'app/js-conflux-sdk.umd.min.js'
+,'a5':'app/ethers-5.2.umd.min.js'
+,'a6':'app/bootstrap.bundle.min.js'
+,'a7':'app/chart.js'
+,'a8':'app/PoolABI.js?id=2256'
+,'a9':'app/PoSPoolContract.js?id=2256'
+,'a10':'app/utils.js?id=2256'
+,'a11':'app/header.js?id=2256'
+,'a12':'app/main.js?id=aaa35'
+ }
+
+Object.keys(obj).forEach(key => {
+          // 检查 Local Storage 中是否有缓存的文件
+        var cachedJS = localStorage.getItem(key);
+        var scriptElement = document.createElement('script');
+
+        if (cachedJS) {
+            // 如果有缓存的文件，从 Local Storage 加载
+            scriptElement.innerHTML = cachedJS;
+            document.body.appendChild(scriptElement);
+        } else {
+            // 如果没有缓存的文件，从服务器加载并缓存
+            fetch('/'+ obj[key])
+                .then(response => response.text())
+                .then(data => {
+                    localStorage.setItem(key, data);
+                    scriptElement.innerHTML = data;
+                    document.body.appendChild(scriptElement);
+                });
+        }
+});
+ 
+    </script>
+ <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"8a80814d1d119460","version":"2024.7.0","r":1,"token":"814c3fdb0c654ab69fbf6d43d750d353","serverTiming":{"name":{"cfL4":true}}}' crossorigin="anonymous"></script>
+
 </body>
 
 </html>

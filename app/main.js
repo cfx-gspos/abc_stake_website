@@ -234,7 +234,7 @@ setTimeout(function () {
           amount2: '+11.72%',
           ades: 'Airdrop ABC countdown:',
           anum: [1, 2],
-          amount3: '0.05ABC/1000CFX',
+          amount3: '0.025ABC/1000CFX',
           space: spaceStore,
           config: configStore,
           chainStatus: {},
