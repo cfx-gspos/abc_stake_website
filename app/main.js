@@ -641,9 +641,51 @@ setTimeout(function () {
                 const _chainId = await window.ethereum.request({
                   method: "eth_chainId",
                 });
+
+             // console.log({
+                //   name: 'conflux--------------------------2',
+                //   _chainId,
+                //   _accounts,
+                //   chain: parseInt(_chainId, 16),
+                //   ddd: CURRENT.eNetId,
+                //   cfxID: "0x" + '1030'.toString(16)
+                // })
+
                 if (parseInt(_chainId, 16) != CURRENT.eNetId) {
-                  alert('Please switch wallet to  Conflux eSpace netWork');
-                  return;
+                  alert('Please switch wallet to Conflux eSpace netWork');
+
+                  try {
+                    await ethereum.request({
+                      method: 'wallet_switchEthereumChain',
+                      params: [{ chainId: '0x406' }],
+                    });
+                    window.location.reload();
+
+                  } catch (switchError) {
+                    // This error code indicates that the chain has not been added to OKX.
+                    if (switchError.code === 4902) {
+                      try {
+                        await okxwallet.request({
+                          method: 'wallet_addEthereumChain',
+                          params: [
+                            {
+                              chainId: '0x406',
+                              chainName: 'Conflux eSpace',
+                              rpcUrls: ['https://evm.confluxrpc.com'],
+                            },
+                          ],
+                        });
+
+                        window.location.reload();
+
+                      } catch {
+                        // handle "add" error
+                      }
+                    }
+
+                    return;
+                  }
+
                 }
 
                 let _walletAccount = ''
