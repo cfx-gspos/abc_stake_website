@@ -69,6 +69,17 @@ const navbarOption = {
   methods: {
     changeSpace(space) {
       this.space.value = space;
+      localStorage.setItem('space', space);
+    }
+  },
+
+  mounted() {
+    if (!localStorage.getItem('space')) {
+      localStorage.setItem('space', 'Core');
+    }
+    const lastSpace = localStorage.getItem('space');
+    if (lastSpace && lastSpace !== this.space.value) {
+      this.changeSpace(lastSpace);
     }
   }
 };
