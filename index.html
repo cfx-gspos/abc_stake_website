@@ -28,10 +28,7 @@
           <li v-if="config.value.eSpaceAddress" @click="changeSpace('eSpace')" :class="`${space.value == 'eSpace' ? 'currnav' : ''}`">
             eSpace
           </li>
-          <li ><a href="https://confluxpos.cn/mobile/" style="
-    margin-left: 5px;
-    color: magenta;
-" >Old</a></li>
+          
         </ul>
       </div>
     </div>
@@ -41,8 +38,7 @@
 
     <div class="lc">
      
-      <span class="language" v-on:click="changeLanguage"  >English</span>
-      <span v-if="false" class="language" v-on:click="changeLanguage"  >English</span>
+ 
     
       <div class="connectWallet">
         <span class="btnA" v-if="!userInfo.connected" v-on:click="connectWallet" id="btnConnectWallet">{{viewRender.connectWallet}}</span>
@@ -446,6 +442,7 @@ Object.keys(obj).forEach(key => {
     </script>
  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"8a80814d1d119460","version":"2024.7.0","r":1,"token":"814c3fdb0c654ab69fbf6d43d750d353","serverTiming":{"name":{"cfL4":true}}}' crossorigin="anonymous"></script>
 
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9410a6e9a87fa970","version":"2025.4.0-1-g37f21b1","r":1,"serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"814c3fdb0c654ab69fbf6d43d750d353","b":1}' crossorigin="anonymous"></script>
 </body>
 
 </html>
